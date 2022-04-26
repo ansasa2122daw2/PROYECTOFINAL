@@ -1,0 +1,8 @@
+Colores usados:
+#d5ded6
+#b7edbf
+white
+black
+
+COLORES PRIMARIOS:
+#b7edbf
