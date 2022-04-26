@@ -1,0 +1,118 @@
+@font-face {
+	font-family: FUENTE;
+	src: url("assets/Montserrat-Italic.ttf");
+}
+
+/* HEADER */
+
+body {
+	background-color: #b7edbf;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+img {
+	width: 13%;
+	margin-top: 1%;
+}
+
+header {
+	width: auto;
+	height: 10%;
+	margin: -1%;
+	padding: 1% 5%;
+	background-color: #ffffff;
+}
+
+nav {
+	width: 100%;
+	display: flex;
+}
+
+nav ul li {
+	display: inline-block;
+	list-style: none;
+	margin-top: 1vh;
+	margin-left: 90vh;
+	font-size: 15px;
+	font-family: FUENTE;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: black;
+}
+
+nav ul li a:hover {
+	color: rgb(171, 167, 167);
+}
+
+nav ul li a img {
+	width: 10%;
+}
+
+header nav .titulo {
+	font-weight: bold;
+	font-size: 25px;
+	font-family: FUENTE;
+	margin-top: -1vh;
+	margin-left: -70vh;
+}
+
+/* INDICE */
+
+.principal {
+	align-items: center;
+	margin: 10% 35%;
+	font-family: FUENTE;
+	margin-bottom: 40%;
+}
+
+.principal .inicioT {
+	text-align: left;
+	font-weight: bold;
+	font-size: 70px;
+	margin-bottom: 10%;
+}
+
+.principal .texto {
+	overflow: hidden; /* Ensures the content is not revealed until the animation */
+	border-right: 0.15em solid rgb(227, 48, 48); /* The typwriter cursor */
+	white-space: nowrap; /* Keeps the content on a single line */
+	margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+	letter-spacing: 0.15em; /* Adjust as needed */
+	animation: typing 3.5s steps(71, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+	from,
+	to {
+		border-color: transparent;
+	}
+	50% {
+		border-color: rgb(214, 112, 112);
+	}
+}
+
+/* SOLO UN JUGADOR */
+
+.body {
+	margin: 20%;
+	text-align: center;
+}
+
+input {
+	border-color: none;
+}
+
+/* MULTIJUGADOR */
