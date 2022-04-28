@@ -26,15 +26,20 @@ let timer = document.getElementById("time");
 let solucionDIV = document.getElementById("body");
 let texto = document.getElementById("typing-texto");
 
+//declaro
+let time = 30;
+let jugador = true;
+let palabras = 0;
+
 //eventos
 input.addEventListener("input", () => {
-	console.log("cambia?");
-
 	let frasesSpan = frases.querySelectorAll("span");
+	//haces split de los valores para compararlos con el parrafo
 	let arrayValue = input.value.split("");
 	frasesSpan.forEach((characterS, index) => {
 		let character = arrayValue[index];
-		if (character === null) {
+		console.log(character);
+		if (character[index] === undefined) {
 			characterS.classList.remove("incorrect");
 			characterS.classList.remove("correct");
 		}
@@ -58,13 +63,9 @@ input.addEventListener(
 	{ once: true }
 );
 
-//declaro
-let time = 30;
-let jugador = true;
-
 function init() {
+	//usar la función muestra
 	muestra(parafos);
-	console.log("funciona?");
 	//si timer 0 entonces:
 	setInterval(check, 50);
 }
@@ -74,6 +75,7 @@ function muestra(parafos) {
 	frases.innerHTML = ""; //parafos[random]
 	input.value = null;
 	console.log(parafos[random].split(""));
+	//haces split de los parafos para que luego compruebe caracter por caracter
 	const prueba = parafos[random].split("").forEach((character) => {
 		const characterS = document.createElement("span");
 		characterS.innerText = character;
@@ -97,10 +99,7 @@ function check() {
 		input.disabled = "true";
 
 		//acabar y enseñar stats
-		let name = "<div>Resultados: </div>";
-		let estilosS = (solucionDIV.innerHTML = name);
-		estilosS.style.width = "20%";
-		estilosS.style.height = "20%";
-		estilosS.style.backgroundColor = "grey";
+		let name = "<div>Resultados: </div>" + palabras;
+		solucionDIV.innerHTML = name;
 	}
 }

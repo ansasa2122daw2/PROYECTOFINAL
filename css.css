@@ -351,4 +351,8 @@ select:focus {
 	align-items: center;
 }
 
+.opciones {
+	margin-top: 20px;
+}
+
 /* MULTIJUGADOR */
