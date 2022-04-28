@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="./css.css" rel="stylesheet" />
-		<script type="text/javascript" src="index.js"></script>
+
 		<title>Peepotype</title>
 	</head>
 	<body>
@@ -17,8 +17,23 @@
 				<a href="index.html#dudas">Dudas</a>
 			</div>
 		</div>
-		<div class="body">
-			<input />
+		<div id="body">
+			<div id="typing-texto">
+				<h2 id="randomize"></h2>
+			</div>
+			<div id="dentro">
+				<input type="text" id="input" autofocus="autofocus" />
+				<div id="content">
+					<ul id="resultado">
+						<li id="timer">
+							<p>Tiempo:</p>
+							<div id="time">10</div>
+							<p>s</p>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</body>
+	<script type="text/javascript" src="script.js"></script>
 </html>
