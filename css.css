@@ -8,6 +8,11 @@
 	src: url("./assets/DMSans-Regular.ttf");
 }
 
+@font-face {
+	font-family: FUENTE3;
+	src: url("./assets/RadioCanada-VariableFont_wdth\,wght.ttf");
+}
+
 html {
 	scroll-behavior: smooth;
 }
@@ -318,7 +323,7 @@ body {
 	width: 95%;
 	font-size: 24px;
 	height: 50px;
-	border-bottom: 5px solid rgb(255, 255, 255);
+	border-bottom: 5px solid rgb(26, 83, 31);
 }
 
 #input:focus,
@@ -333,6 +338,17 @@ select:focus {
 
 .incorrect {
 	color: red;
+}
+
+.fuenteparrafo {
+	font-family: FUENTE3;
+}
+
+.solucion {
+	width: 500px;
+	height: 500px;
+	background-color: grey;
+	align-items: center;
 }
 
 /* MULTIJUGADOR */
