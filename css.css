@@ -135,7 +135,7 @@ body {
 	margin: 0 auto;
 	letter-spacing: 0.15em;
 	animation: typing 3.5s steps(71, end), blink-caret 0.75s step-end infinite;
-	margin-bottom: -20%;
+	margin-bottom: 35%;
 }
 
 @keyframes typing {
@@ -236,12 +236,21 @@ body {
 	font-family: FUENTE2;
 }
 
-.teclado {
-	width: 15%;
-	height: 15%;
+.teclitas {
+	display: flex;
+	flex-direction: row;
+	margin-left: -3px;
+	width: 480px;
+	background-color: rgba(239, 244, 239, 0.707);
+	padding: 10px;
 }
 
-.teclitas {
+.uno {
+	margin-left: 5px;
+	padding: 5px;
+	width: 10px;
+	height: 5px;
+	border: 1px grey;
 }
 
 .uno {
@@ -353,6 +362,10 @@ select:focus {
 
 .opciones {
 	margin-top: 20px;
+}
+
+.red {
+	color: #f00;
 }
 
 /* MULTIJUGADOR */

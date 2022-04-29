@@ -26,10 +26,22 @@ let timer = document.getElementById("time");
 let solucionDIV = document.getElementById("body");
 let texto = document.getElementById("typing-texto");
 
+let dificilB = document.getElementById("dificil");
+let normalB = document.getElementById("normal");
+let facilB = document.getElementById("facil");
+
 //declaro
-let time = 30;
+let time = 30; //luego no usaré este
 let jugador = true;
-let palabras = 0;
+const palabras = 0;
+// let dificultat = [(facil = 10), (medio = 30), (dificil = 60)];
+
+// const currentLevel = 0;
+
+// //dificultat
+// dificilB.addEventListener("onpress", () => {
+// 	return (currentLevel = 10);
+// });
 
 //eventos
 input.addEventListener("input", () => {
@@ -38,6 +50,8 @@ input.addEventListener("input", () => {
 	let arrayValue = input.value.split("");
 	frasesSpan.forEach((characterS, index) => {
 		let character = arrayValue[index];
+		//borrar si no sirve de nada xd
+		character.length++;
 		console.log(character);
 		if (character[index] === undefined) {
 			characterS.classList.remove("incorrect");
@@ -46,9 +60,15 @@ input.addEventListener("input", () => {
 		if (character === characterS.innerText) {
 			characterS.classList.add("correct");
 			characterS.classList.remove("incorrect");
+			//borrar si no sirve de nada xd
+			console.log("BIEN" + character.length);
+			console.log("BIEN" + character);
 		} else {
 			characterS.classList.add("incorrect");
 			characterS.classList.remove("correct");
+			//borrar si no sirve de nada xd
+			console.log("ERROR" + character.length);
+			console.log("ERROR" + character);
 		}
 	});
 });
@@ -70,6 +90,11 @@ function init() {
 	setInterval(check, 50);
 }
 
+//contar las palabras
+// function countChars(obj) {
+// 	let obj1 = obj.value.length;
+// }
+
 function muestra(parafos) {
 	const random = Math.floor(Math.random() * parafos.length);
 	frases.innerHTML = ""; //parafos[random]
@@ -90,6 +115,7 @@ function countdown() {
 	}
 	if (time === 0) {
 		jugador = false;
+		//hacer aqui el calculo de los fallos
 	}
 	timer.innerHTML = time;
 }
@@ -99,7 +125,12 @@ function check() {
 		input.disabled = "true";
 
 		//acabar y enseñar stats
-		let name = "<div>Resultados: </div>" + palabras;
-		solucionDIV.innerHTML = name;
+		//HACER LA GRAFIA IMPORTNATE
+		//HACER ESTO->
+		let name = "<div>Resultados: </div>";
+		let wpm = "<div>WPM: </div>";
+		let errores = "<div>Errores: </div>";
+
+		solucionDIV.innerHTML = name + wpm + errores;
 	}
 }
