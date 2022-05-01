@@ -1,13 +1,27 @@
-let que = document.getElementById("q");
+const collection = document.getElementsByClassName("uno");
+console.log(collection);
 
 document.addEventListener("keydown", (event) => {
 	const keyName = event.key;
-	console.log(que.id);
 	console.log("keydown event\n\n" + "key: " + keyName);
 
-	if (keyName === que.id) {
-		que.classList.add("incorrect");
-	} else {
-		que.classList.remove("incorrect");
+	for (let element of collection) {
+		if (keyName === element.id) {
+			//para que se ponga rojo al clickar
+			element.classList.add("incorrect");
+		} else {
+			element.classList.remove("incorrect");
+		}
+	}
+});
+
+document.addEventListener("keyup", (event) => {
+	const keyName = event.key;
+	console.log("keyup event\n\n" + "key: " + keyName);
+
+	for (let element of collection) {
+		if (keyName === element.id) {
+			element.classList.remove("incorrect");
+		}
 	}
 });

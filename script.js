@@ -19,6 +19,8 @@ const parafos = [
 	"Rendirse es lo que destruye a la gente, cuando te niegas con todo tu corazón a rendirte entonces trasciendes tu humanidad, incluso ante la muerte nunca te rindas.",
 ];
 
+let solucion = [];
+
 //DOM
 let frases = document.getElementById("randomize");
 let input = document.getElementById("input");
@@ -31,7 +33,8 @@ let normalB = document.getElementById("normal");
 let facilB = document.getElementById("facil");
 
 //declaro
-let time = 30; //luego no usaré este
+const tiempoFijo = 30;
+let time = tiempoFijo; //luego no usaré este
 let jugador = true;
 const palabras = 0;
 // let dificultat = [(facil = 10), (medio = 30), (dificil = 60)];
@@ -100,6 +103,7 @@ function muestra(parafos) {
 	frases.innerHTML = ""; //parafos[random]
 	input.value = null;
 	console.log(parafos[random].split(""));
+	solucion = parafos[random];
 	//haces split de los parafos para que luego compruebe caracter por caracter
 	const prueba = parafos[random].split("").forEach((character) => {
 		const characterS = document.createElement("span");
@@ -124,13 +128,33 @@ function check() {
 	if (!jugador && time === 0) {
 		input.disabled = "true";
 
+		let solucionArray = solucion.split(" ");
+		let inputArray = input.value.split(" ");
+		let palabrasCorrectas = 0;
+
+		for (let i = 0; i < solucionArray.length; i++) {
+			if (solucionArray[i] === inputArray[i]) {
+				palabrasCorrectas++;
+			}
+		}
+		let wpm = (palabrasCorrectas * 60) / tiempoFijo;
+		let accuracy = Math.floor(palabrasCorrectas / solucionArray.length).toFixed(2);
+		console.log("SOLUCION ARRAY: " + solucionArray.length);
+
 		//acabar y enseñar stats
 		//HACER LA GRAFIA IMPORTNATE
 		//HACER ESTO->
 		let name = "<div>Resultados: </div>";
-		let wpm = "<div>WPM: </div>";
 		let errores = "<div>Errores: </div>";
 
-		solucionDIV.innerHTML = name + wpm + errores;
+		solucionDIV.innerHTML = solucion + input.value + palabrasCorrectas + "wpm:  " + wpm + "ACC:  " + accuracy;
 	}
 }
+
+//local storage
+var almacenar = {
+	taula: document.getElementById("taula"),
+	desar: function () {
+		localStorage.setItem(arraypuntuacion[arraypuntuacion.length - 1], document.getElementById("nombrePuntuacion").value);
+	},
+};
