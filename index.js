@@ -8,9 +8,9 @@ document.addEventListener("keydown", (event) => {
 	for (let element of collection) {
 		if (keyName === element.id) {
 			//para que se ponga rojo al clickar
-			element.classList.add("incorrect");
+			element.classList.add("indexColor");
 		} else {
-			element.classList.remove("incorrect");
+			element.classList.remove("indexColor");
 		}
 	}
 });
@@ -21,7 +21,7 @@ document.addEventListener("keyup", (event) => {
 
 	for (let element of collection) {
 		if (keyName === element.id) {
-			element.classList.remove("incorrect");
+			element.classList.remove("indexColor");
 		}
 	}
 });

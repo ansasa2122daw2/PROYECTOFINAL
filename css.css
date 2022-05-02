@@ -239,10 +239,10 @@ body {
 .teclitas {
 	display: flex;
 	flex-direction: row;
-	margin-left: -3px;
-	width: 480px;
+	width: 500px;
+	margin-left: -40px;
 	background-color: rgba(239, 244, 239, 0.707);
-	padding: 10px;
+	padding: 15px;
 }
 
 .uno {
@@ -251,6 +251,7 @@ body {
 	width: 10px;
 	height: 5px;
 	border: 1px grey;
+	text-align: center;
 }
 
 .uno {
@@ -347,6 +348,7 @@ select:focus {
 
 .incorrect {
 	color: red;
+	font-weight: bold;
 }
 
 .fuenteparrafo {
@@ -365,7 +367,13 @@ select:focus {
 }
 
 #myChart {
-	width: 40%;
+	width: 20%;
+}
+
+.indexColor {
+	color: rgb(19, 56, 5);
+	font-weight: bold;
+	background-color: rgba(135, 139, 133, 0.299);
 }
 
 /* MULTIJUGADOR */

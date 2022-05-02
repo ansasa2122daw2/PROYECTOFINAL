@@ -34,12 +34,13 @@ let facilB = document.getElementById("facil");
 
 //declaro
 const tiempoFijo = 30;
-let time = tiempoFijo; //luego no usaré este
+let time = tiempoFijo;
 let jugador = true;
 const palabras = 0;
 //dificultad
-let dificultat = { facil: 10, medio: 30, dificil: 60 };
-let currentLevel = 30;
+var dificultat = { facil: 10, medio: 30, dificil: 60 };
+var currentLevel = 30;
+var leveltimer = 0;
 
 //eventos
 input.addEventListener("input", () => {
@@ -81,29 +82,44 @@ function init() {
 	setInterval(check, 50);
 
 	//dificultad on press button
-	// dificilB.addEventListener("click", function countdownDificultad() {
-	// 	currentLevel = dificultat.dificil + 1;
+	dificilB.addEventListener("click", function countdownDificultad() {
+		leveltimer = dificultat.dificil;
+		currentLevel = dificultat.dificil + 1;
 
-	// 	if (currentLevel > 0) {
-	// 		currentLevel--;
-	// 	}
-	// 	if (currentLevel === 0) {
-	// 		jugador = false;
-	// 	}
-	// 	timer.innerHTML = currentLevel;
-	// });
+		if (currentLevel > 0) {
+			currentLevel--;
+		}
+		if (currentLevel === 0) {
+			jugador = false;
+		}
+		timer.innerHTML = currentLevel;
+	});
 
-	// normalB.addEventListener("click", function countdownDificultad() {
-	// 	currentLevel = dificultat.medio + 1;
+	normalB.addEventListener("click", function countdownDificultad() {
+		leveltimer = dificultat.medio;
+		currentLevel = dificultat.medio + 1;
 
-	// 	if (currentLevel > 0) {
-	// 		currentLevel--;
-	// 	}
-	// 	if (currentLevel === 0) {
-	// 		jugador = false;
-	// 	}
-	// 	timer.innerHTML = currentLevel;
-	// });
+		if (currentLevel > 0) {
+			currentLevel--;
+		}
+		if (currentLevel === 0) {
+			jugador = false;
+		}
+		timer.innerHTML = currentLevel;
+	});
+
+	facilB.addEventListener("click", function countdownDificultad() {
+		leveltimer = dificultat.facil;
+		currentLevel = dificultat.facil + 1;
+
+		if (currentLevel > 0) {
+			currentLevel--;
+		}
+		if (currentLevel === 0) {
+			jugador = false;
+		}
+		timer.innerHTML = currentLevel;
+	});
 }
 
 function muestra(parafos) {
@@ -122,18 +138,18 @@ function muestra(parafos) {
 }
 
 function countdown() {
-	if (time > 0) {
-		time--;
+	if (currentLevel > 0) {
+		currentLevel--;
 	}
-	if (time === 0) {
+	if (currentLevel === 0) {
 		jugador = false;
 		//hacer aqui el calculo de los fallos
 	}
-	timer.innerHTML = time;
+	timer.innerHTML = currentLevel;
 }
 
 function check() {
-	if (!jugador && time === 0) {
+	if (!jugador && currentLevel === 0) {
 		input.disabled = "true";
 
 		let solucionArray = solucion.split(" ");
@@ -144,16 +160,16 @@ function check() {
 		for (let i = 0; i < solucionArray.length; i++) {
 			if (solucionArray[i] === inputArray[i]) {
 				palabrasCorrectas++;
-				var wpmPalabras = (palabrasCorrectas * 60) / tiempoFijo;
+				var wpmPalabras = (palabrasCorrectas * 60) / leveltimer;
 			} else {
 				errores++;
 			}
 		}
-		const wpm = (palabrasCorrectas * 60) / tiempoFijo;
+		const wpm = Math.floor((palabrasCorrectas * 60) / leveltimer).toFixed(0);
 		let accuracy = Math.floor((palabrasCorrectas / solucionArray.length) * 100).toFixed(2);
 		//console.log("SOLUCION ARRAY: " + solucionArray.length);
 
-		solucionDIV.innerHTML = " WPM :  " + wpm + " | ACC :  " + accuracy + "%" + "<br/>" + " PALABRAS: " + solucionArray.length + " | IDIOMA: " + "Castellano" + " | TIEMPO: " + tiempoFijo + "s";
+		solucionDIV.innerHTML = " WPM:  " + wpm + " | ACC :  " + accuracy + "%" + "<br/>" + " PALABRAS: " + solucionArray.length + " | IDIOMA: " + "Castellano" + " | TIEMPO: " + leveltimer + "s";
 		solucionDIV.style.fontWeight = "bold";
 		solucionDIV.style.textAlign = "left";
 		solucionDIV.style.fontFamily = "FUENTE3";
@@ -165,7 +181,7 @@ function check() {
 				{
 					backgroundColor: "rgb(255, 99, 132)",
 					borderColor: "rgb(255, 99, 132)",
-					data: [wpmPalabras],
+					data: [wpmPalabras, wpmPalabras, wpmPalabras, wpmPalabras, wpmPalabras],
 				},
 				{
 					backgroundColor: "rgb(255, 99, 132)",
@@ -182,6 +198,7 @@ function check() {
 		};
 
 		//para el Chart se muestre
+
 		const myChart = new Chart(document.getElementById("myChart"), config);
 	} // solucionDIV.innerHTML = solucion + input.value + palabrasCorrectas
 }
