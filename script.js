@@ -37,14 +37,9 @@ const tiempoFijo = 30;
 let time = tiempoFijo; //luego no usaré este
 let jugador = true;
 const palabras = 0;
-// let dificultat = [(facil = 10), (medio = 30), (dificil = 60)];
-
-// const currentLevel = 0;
-
-// //dificultat
-// dificilB.addEventListener("onpress", () => {
-// 	return (currentLevel = 10);
-// });
+//dificultad
+let dificultat = { facil: 10, medio: 30, dificil: 60 };
+let currentLevel = 30;
 
 //eventos
 input.addEventListener("input", () => {
@@ -53,9 +48,6 @@ input.addEventListener("input", () => {
 	let arrayValue = input.value.split("");
 	frasesSpan.forEach((characterS, index) => {
 		let character = arrayValue[index];
-		//borrar si no sirve de nada xd
-		character.length++;
-		console.log(character);
 		if (character[index] === undefined) {
 			characterS.classList.remove("incorrect");
 			characterS.classList.remove("correct");
@@ -63,15 +55,9 @@ input.addEventListener("input", () => {
 		if (character === characterS.innerText) {
 			characterS.classList.add("correct");
 			characterS.classList.remove("incorrect");
-			//borrar si no sirve de nada xd
-			console.log("BIEN" + character.length);
-			console.log("BIEN" + character);
 		} else {
 			characterS.classList.add("incorrect");
 			characterS.classList.remove("correct");
-			//borrar si no sirve de nada xd
-			console.log("ERROR" + character.length);
-			console.log("ERROR" + character);
 		}
 	});
 });
@@ -82,6 +68,8 @@ input.addEventListener(
 	() => {
 		//timer
 		setInterval(countdown, 1000);
+		//otro timer de la dificultad
+		//setInterval(countdownDificultad(), 1000);
 	},
 	{ once: true }
 );
@@ -91,18 +79,38 @@ function init() {
 	muestra(parafos);
 	//si timer 0 entonces:
 	setInterval(check, 50);
-}
 
-//contar las palabras
-// function countChars(obj) {
-// 	let obj1 = obj.value.length;
-// }
+	//dificultad on press button
+	// dificilB.addEventListener("click", function countdownDificultad() {
+	// 	currentLevel = dificultat.dificil + 1;
+
+	// 	if (currentLevel > 0) {
+	// 		currentLevel--;
+	// 	}
+	// 	if (currentLevel === 0) {
+	// 		jugador = false;
+	// 	}
+	// 	timer.innerHTML = currentLevel;
+	// });
+
+	// normalB.addEventListener("click", function countdownDificultad() {
+	// 	currentLevel = dificultat.medio + 1;
+
+	// 	if (currentLevel > 0) {
+	// 		currentLevel--;
+	// 	}
+	// 	if (currentLevel === 0) {
+	// 		jugador = false;
+	// 	}
+	// 	timer.innerHTML = currentLevel;
+	// });
+}
 
 function muestra(parafos) {
 	const random = Math.floor(Math.random() * parafos.length);
 	frases.innerHTML = ""; //parafos[random]
 	input.value = null;
-	console.log(parafos[random].split(""));
+	//console.log(parafos[random].split(""));
 	solucion = parafos[random];
 	//haces split de los parafos para que luego compruebe caracter por caracter
 	const prueba = parafos[random].split("").forEach((character) => {
@@ -131,30 +139,57 @@ function check() {
 		let solucionArray = solucion.split(" ");
 		let inputArray = input.value.split(" ");
 		let palabrasCorrectas = 0;
+		let errores = 0;
 
 		for (let i = 0; i < solucionArray.length; i++) {
 			if (solucionArray[i] === inputArray[i]) {
 				palabrasCorrectas++;
+				var wpmPalabras = (palabrasCorrectas * 60) / tiempoFijo;
+			} else {
+				errores++;
 			}
 		}
-		let wpm = (palabrasCorrectas * 60) / tiempoFijo;
-		let accuracy = Math.floor(palabrasCorrectas / solucionArray.length).toFixed(2);
-		console.log("SOLUCION ARRAY: " + solucionArray.length);
+		const wpm = (palabrasCorrectas * 60) / tiempoFijo;
+		let accuracy = Math.floor((palabrasCorrectas / solucionArray.length) * 100).toFixed(2);
+		//console.log("SOLUCION ARRAY: " + solucionArray.length);
 
-		//acabar y enseñar stats
-		//HACER LA GRAFIA IMPORTNATE
-		//HACER ESTO->
-		let name = "<div>Resultados: </div>";
-		let errores = "<div>Errores: </div>";
+		solucionDIV.innerHTML = " WPM :  " + wpm + " | ACC :  " + accuracy + "%" + "<br/>" + " PALABRAS: " + solucionArray.length + " | IDIOMA: " + "Castellano" + " | TIEMPO: " + tiempoFijo + "s";
+		solucionDIV.style.fontWeight = "bold";
+		solucionDIV.style.textAlign = "left";
+		solucionDIV.style.fontFamily = "FUENTE3";
+		const labels = ["1", "2", "3", "4", "5", "6"];
 
-		solucionDIV.innerHTML = solucion + input.value + palabrasCorrectas + "wpm:  " + wpm + "ACC:  " + accuracy;
-	}
+		const data = {
+			labels: labels,
+			datasets: [
+				{
+					backgroundColor: "rgb(255, 99, 132)",
+					borderColor: "rgb(255, 99, 132)",
+					data: [wpmPalabras],
+				},
+				{
+					backgroundColor: "rgb(255, 99, 132)",
+					borderColor: "rgb(255, 99, 132)",
+					data: [errores],
+				},
+			],
+		};
+
+		const config = {
+			type: "line",
+			data: data,
+			options: {},
+		};
+
+		//para el Chart se muestre
+		const myChart = new Chart(document.getElementById("myChart"), config);
+	} // solucionDIV.innerHTML = solucion + input.value + palabrasCorrectas
 }
 
 //local storage
-var almacenar = {
-	taula: document.getElementById("taula"),
-	desar: function () {
-		localStorage.setItem(arraypuntuacion[arraypuntuacion.length - 1], document.getElementById("nombrePuntuacion").value);
-	},
-};
+// var almacenar = {
+// 	taula: document.getElementById("body"),
+// 	desar: function () {
+// 		localStorage.setItem(wpm, document.getElementById("body"));
+// 	},
+// };

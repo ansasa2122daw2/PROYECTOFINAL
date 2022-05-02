@@ -364,4 +364,8 @@ select:focus {
 	margin-top: 20px;
 }
 
+#myChart {
+	width: 40%;
+}
+
 /* MULTIJUGADOR */
