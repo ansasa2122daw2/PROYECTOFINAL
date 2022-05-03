@@ -367,13 +367,35 @@ select:focus {
 }
 
 #myChart {
-	width: 20%;
+	width: 9%;
+	margin-top: -200px;
+	margin-left: 300px;
 }
 
 .indexColor {
 	color: rgb(19, 56, 5);
 	font-weight: bold;
 	background-color: rgba(135, 139, 133, 0.299);
+}
+
+#fila {
+	margin-left: 10px;
+	margin-top: 30px;
+}
+
+button {
+	font-size: 13px;
+	width: 50px;
+	height: 30px;
+	border-radius: 3px;
+	background-color: black;
+	color: white;
+	text-decoration: none;
+	border: none;
+}
+
+.jugador {
+	overflow: hidden;
 }
 
 /* MULTIJUGADOR */

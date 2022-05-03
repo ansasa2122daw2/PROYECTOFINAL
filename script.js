@@ -19,6 +19,8 @@ const parafos = [
 	"Rendirse es lo que destruye a la gente, cuando te niegas con todo tu corazón a rendirte entonces trasciendes tu humanidad, incluso ante la muerte nunca te rindas.",
 ];
 
+const diez = ["hola amigos adiós solo perdón pierna corazón tener láminas importante", "afeitar anillo todos caracol perdonar historia limpiar humano tierra mar"];
+
 let solucion = [];
 
 //DOM
@@ -31,6 +33,7 @@ let texto = document.getElementById("typing-texto");
 let dificilB = document.getElementById("dificil");
 let normalB = document.getElementById("normal");
 let facilB = document.getElementById("facil");
+let hideText = document.getElementById("***");
 
 //declaro
 const tiempoFijo = 30;
@@ -75,6 +78,7 @@ input.addEventListener(
 	{ once: true }
 );
 
+//FUNCIÓN PRINCIPAL
 function init() {
 	//usar la función muestra
 	muestra(parafos);
@@ -83,6 +87,17 @@ function init() {
 
 	//dificultad on press button
 	dificilB.addEventListener("click", function countdownDificultad() {
+		//css
+		dificilB.style.backgroundColor = "rgb(37, 80, 21)";
+		facilB.style.backgroundColor = "black";
+		normalB.style.backgroundColor = "black";
+		hideText.style.backgroundColor = "black";
+
+		//focus the input when change
+		input.focus();
+		input.setAttribute("type", "text");
+
+		//nivel change
 		leveltimer = dificultat.dificil;
 		currentLevel = dificultat.dificil + 1;
 
@@ -96,6 +111,17 @@ function init() {
 	});
 
 	normalB.addEventListener("click", function countdownDificultad() {
+		//css
+		normalB.style.backgroundColor = "rgb(37, 80, 21)";
+		facilB.style.backgroundColor = "black";
+		dificilB.style.backgroundColor = "black";
+		hideText.style.backgroundColor = "black";
+
+		//focus the input when change
+		input.focus();
+		input.setAttribute("type", "text");
+
+		//nivel change
 		leveltimer = dificultat.medio;
 		currentLevel = dificultat.medio + 1;
 
@@ -109,8 +135,42 @@ function init() {
 	});
 
 	facilB.addEventListener("click", function countdownDificultad() {
+		//css
+		facilB.style.backgroundColor = "rgb(37, 80, 21)";
+		normalB.style.backgroundColor = "black";
+		dificilB.style.backgroundColor = "black";
+		hideText.style.backgroundColor = "black";
+
+		//focus the input when change
+		input.focus();
+		input.setAttribute("type", "text");
+
+		//nivel change
 		leveltimer = dificultat.facil;
 		currentLevel = dificultat.facil + 1;
+
+		if (currentLevel > 0) {
+			currentLevel--;
+		}
+		if (currentLevel === 0) {
+			jugador = false;
+		}
+		timer.innerHTML = currentLevel;
+	});
+
+	hideText.addEventListener("click", function countdownDificultad() {
+		//css
+		hideText.style.backgroundColor = "rgb(37, 80, 21)";
+		facilB.style.backgroundColor = "black";
+		normalB.style.backgroundColor = "black";
+		dificilB.style.backgroundColor = "black";
+
+		//focus the input when change y poner ** al escribir
+		input.focus();
+		input.setAttribute("type", "password");
+
+		leveltimer = dificultat.medio;
+		currentLevel = dificultat.medio + 1;
 
 		if (currentLevel > 0) {
 			currentLevel--;
@@ -143,7 +203,6 @@ function countdown() {
 	}
 	if (currentLevel === 0) {
 		jugador = false;
-		//hacer aqui el calculo de los fallos
 	}
 	timer.innerHTML = currentLevel;
 }
@@ -167,9 +226,8 @@ function check() {
 		}
 		const wpm = Math.floor((palabrasCorrectas * 60) / leveltimer).toFixed(0);
 		let accuracy = Math.floor((palabrasCorrectas / solucionArray.length) * 100).toFixed(2);
-		//console.log("SOLUCION ARRAY: " + solucionArray.length);
 
-		solucionDIV.innerHTML = " WPM:  " + wpm + " | ACC :  " + accuracy + "%" + "<br/>" + " PALABRAS: " + solucionArray.length + " | IDIOMA: " + "Castellano" + " | TIEMPO: " + leveltimer + "s";
+		solucionDIV.innerHTML = " WPM:  " + wpm + " | ACC :  " + accuracy + "%" + "<br/>" + " PALABRAS: " + solucionArray.length + " | IDIOMA: " + "Castellano" + " | TIEMPO: " + leveltimer + "s" + "<br />";
 		solucionDIV.style.fontWeight = "bold";
 		solucionDIV.style.textAlign = "left";
 		solucionDIV.style.fontFamily = "FUENTE3";
@@ -181,11 +239,11 @@ function check() {
 				{
 					backgroundColor: "rgb(255, 99, 132)",
 					borderColor: "rgb(255, 99, 132)",
-					data: [wpmPalabras, wpmPalabras, wpmPalabras, wpmPalabras, wpmPalabras],
+					data: [wpmPalabras],
 				},
 				{
 					backgroundColor: "rgb(255, 99, 132)",
-					borderColor: "rgb(255, 99, 132)",
+					borderColor: "red",
 					data: [errores],
 				},
 			],
@@ -194,19 +252,25 @@ function check() {
 		const config = {
 			type: "line",
 			data: data,
-			options: {},
+			options: {
+				responsive: false,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: false,
+				},
+				scales: { y: { title: { display: true, text: "WPM" } } },
+			},
 		};
 
 		//para el Chart se muestre
-
 		const myChart = new Chart(document.getElementById("myChart"), config);
+
+		//botones bloqueados para que tengas que refrescar la página
+		hideText.disabled = true;
+		facilB.disabled = true;
+		normalB.disabled = true;
+		dificilB.disabled = true;
 	} // solucionDIV.innerHTML = solucion + input.value + palabrasCorrectas
 }
 
 //local storage
-// var almacenar = {
-// 	taula: document.getElementById("body"),
-// 	desar: function () {
-// 		localStorage.setItem(wpm, document.getElementById("body"));
-// 	},
-// };

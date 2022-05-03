@@ -8,7 +8,7 @@
 
 		<title>Peepotype</title>
 	</head>
-	<body>
+	<body class="jugador">
 		<div class="header2">
 			<a href="index.html" class="logo">PEEPOTYPE</a>
 			<div class="header-right">
@@ -18,8 +18,8 @@
 			</div>
 		</div>
 		<div class="opciones">
-			<div class="fila"><button id="dificil">60s</button> - <button id="normal">30s</button> - <button id="facil">10s</button> -</div>
-			<div class="fila"><button>10p</button> - <button>20p</button> - <button>***</button> -</div>
+			<div id="fila"><button id="dificil">60s</button> - <button id="normal">30s</button> - <button id="facil">10s</button> - <button id="***">***</button> <button id="descarga">.</button></button></div>
+			<!-- <div class="fila"><button>10p</button> - <button>20p</button> - <button>***</button></div> -->
 		</div>
 		<div id="body">
 			<div id="typing-texto">
@@ -39,9 +39,10 @@
 			</div>
 		</div>
 		<div>
-			<canvas id="myChart" width="100" height="100"></canvas>
+			<canvas id="myChart" width="700" height="200"></canvas>
 		</div>
 	</body>
+	<styles> </styles>
 	<script type="text/javascript" src="script.js"></script>
 	<!-- CHART PARA HACER LA TABLA -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
