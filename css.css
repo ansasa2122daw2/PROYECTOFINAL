@@ -398,4 +398,12 @@ button {
 	overflow: hidden;
 }
 
+#tituloP {
+	font-family: FUENTE3;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 70px;
+	font-size: 30px;
+}
+
 /* MULTIJUGADOR */

@@ -5,8 +5,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="./css.css" rel="stylesheet" />
-		<script type="text/javascript" src="server.js"></script>
-		<script src="/socket.io/socket.io.js"></script>
 		<title>Peepotype</title>
 	</head>
 	<body>
@@ -14,32 +12,15 @@
 			<a href="index.html" class="logo">PEEPOTYPE</a>
 			<div class="header-right">
 				<a class="active" href="index.html">Inicio</a>
-				<a href="solojugador.html">Juega solo ></a>
+				<a href="index.html#juega">Juega ahora</a>
 				<a href="index.html#dudas">Dudas</a>
 				<a href="puntuaciones.html">👑</a>
 			</div>
 		</div>
 		<div>
-			<div id="ss">
-				<div id="jugador1"></div>
-				<div id="jugador2"></div>
-			</div>
+			<div id="tituloP">TUS ÚLTIMAS PUNTUACIONES</div>
+			<table class="storage" id="taula"></table>
 		</div>
 	</body>
-	<script src="/socket.io/socket.io.js"></script>
-	<script>
-		var socket = io.connect();
-
-		socket.on("connect", function () {
-			console.log("Connected");
-
-			socket.on("message", function (message) {
-				console.log(message);
-			});
-
-			socket.on("disconnect", function () {
-				console.log("Disconnected");
-			});
-		});
-	</script>
+	<script type="text/javascript" src="puntuaciones.js"></script>
 </html>

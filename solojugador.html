@@ -15,10 +15,11 @@
 				<a class="active" href="index.html">Inicio</a>
 				<a href="websockets.html">Juega con amigos ></a>
 				<a href="index.html#dudas">Dudas</a>
+				<a href="puntuaciones.html">👑</a>
 			</div>
 		</div>
 		<div class="opciones">
-			<div id="fila"><button id="dificil">60s</button> - <button id="normal">30s</button> - <button id="facil">10s</button> - <button id="***">***</button> <button id="descarga">.</button></button></div>
+			<div id="fila"><button id="dificil">60s</button> - <button id="normal">30s</button> - <button id="facil">10s</button> - <button id="***">***</button></div>
 			<!-- <div class="fila"><button>10p</button> - <button>20p</button> - <button>***</button></div> -->
 		</div>
 		<div id="body">
@@ -26,7 +27,8 @@
 				<h2 id="randomize"></h2>
 			</div>
 			<div id="dentro">
-				<input type="text" id="input" autofocus="autofocus" />
+				<!-- autocomplete off para que no salga por defecto el texto guardado y autofocus para que se haga focus por defecto -->
+				<input type="text" id="input" autofocus="autofocus" autocomplete="off" />
 				<div id="content">
 					<ul id="resultado">
 						<li id="timer">
@@ -39,7 +41,8 @@
 			</div>
 		</div>
 		<div>
-			<canvas id="myChart" width="700" height="200"></canvas>
+			<canvas class="canvas" id="myChart" width="700" height="200"> </canvas>
+			<!-- <button id="descarga">guarda?</button> -->
 		</div>
 	</body>
 	<styles> </styles>

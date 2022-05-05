@@ -52,11 +52,11 @@ input.addEventListener("input", () => {
 	let arrayValue = input.value.split("");
 	frasesSpan.forEach((characterS, index) => {
 		let character = arrayValue[index];
-		if (character[index] === undefined) {
+		if (character && character === undefined) {
 			characterS.classList.remove("incorrect");
 			characterS.classList.remove("correct");
 		}
-		if (character === characterS.innerText) {
+		if (character && character === characterS.innerText) {
 			characterS.classList.add("correct");
 			characterS.classList.remove("incorrect");
 		} else {
@@ -197,6 +197,11 @@ function muestra(parafos) {
 	});
 }
 
+let arrayWPM_Partida = [];
+let countUp = 1;
+let arrayLabel_partida = [countUp];
+let arrayErrores_partida = [];
+
 function countdown() {
 	if (currentLevel > 0) {
 		currentLevel--;
@@ -205,7 +210,36 @@ function countdown() {
 		jugador = false;
 	}
 	timer.innerHTML = currentLevel;
+
+	let solucionArray = solucion.split(" ");
+	let inputArray = input.value.split(" ");
+	let palabrasCorrectas = 0;
+	let errores = 0;
+
+	//for de count porque va contando cada segundo
+	for (let i = 1; i <= countUp; i++) {
+		if (solucionArray[i] === inputArray[i]) {
+			palabrasCorrectas++;
+		} else {
+			errores++;
+		}
+	}
+
+	//primero se hace ++ y luego se guarda en la variable
+	++countUp;
+
+	//se hace push al label parar que ponga todos los segundos que el usuario ha escrito
+	arrayLabel_partida.push(countUp);
+	//push de los errores
+	arrayErrores_partida.push(errores);
+	//push del wpm segun si ha escrito la palabra correcta en ese segundo
+	arrayWPM_Partida.push(Math.floor((palabrasCorrectas * 60) / countUp).toFixed(0));
 }
+
+//declarar valores
+let wpm = 0;
+let accuracy = 0;
+let arrayLocalStorage = [];
 
 function check() {
 	if (!jugador && currentLevel === 0) {
@@ -219,32 +253,31 @@ function check() {
 		for (let i = 0; i < solucionArray.length; i++) {
 			if (solucionArray[i] === inputArray[i]) {
 				palabrasCorrectas++;
-				var wpmPalabras = (palabrasCorrectas * 60) / leveltimer;
 			} else {
 				errores++;
 			}
 		}
-		const wpm = Math.floor((palabrasCorrectas * 60) / leveltimer).toFixed(0);
-		let accuracy = Math.floor((palabrasCorrectas / solucionArray.length) * 100).toFixed(2);
+		wpm = Math.floor((palabrasCorrectas * 60) / leveltimer).toFixed(0);
+		accuracy = Math.floor((palabrasCorrectas / solucionArray.length) * 100).toFixed(2);
 
-		solucionDIV.innerHTML = " WPM:  " + wpm + " | ACC :  " + accuracy + "%" + "<br/>" + " PALABRAS: " + solucionArray.length + " | IDIOMA: " + "Castellano" + " | TIEMPO: " + leveltimer + "s" + "<br />";
-		solucionDIV.style.fontWeight = "bold";
-		solucionDIV.style.textAlign = "left";
-		solucionDIV.style.fontFamily = "FUENTE3";
-		const labels = ["1", "2", "3", "4", "5", "6"];
+		solucionDIV.innerHTML = "WPM:  " + wpm + "<br/>" + "<br/>" + "ACC:  " + accuracy + "%" + "<br/>" + "<br/>" + "PALABRAS: " + solucionArray.length + " - IDIOMA: " + "Castellano" + " - TIEMPO: " + leveltimer + "s";
+		solucionDIV.classList.add("solucionDIV");
+
+		//chart js
+		const labels = arrayLabel_partida;
 
 		const data = {
 			labels: labels,
 			datasets: [
 				{
-					backgroundColor: "rgb(255, 99, 132)",
-					borderColor: "rgb(255, 99, 132)",
-					data: [wpmPalabras],
+					backgroundColor: "rgb(27, 56, 16)",
+					borderColor: "rgb(27, 56, 16)",
+					data: arrayWPM_Partida,
 				},
 				{
-					backgroundColor: "rgb(255, 99, 132)",
-					borderColor: "red",
-					data: [errores],
+					backgroundColor: "rgb(255,0,0)",
+					borderColor: "rgb(255,0,0)",
+					data: arrayErrores_partida,
 				},
 			],
 		};
@@ -259,6 +292,7 @@ function check() {
 					legend: false,
 				},
 				scales: { y: { title: { display: true, text: "WPM" } } },
+				scales: { x: { title: { display: true, text: "Errores" } } },
 			},
 		};
 
@@ -270,7 +304,19 @@ function check() {
 		facilB.disabled = true;
 		normalB.disabled = true;
 		dificilB.disabled = true;
+
+		arrayLocalStorage.push({ vwpm: wpm, vtimer: leveltimer });
+
+		//local storage lo llamo aquí
+		almacenar.desar();
 	} // solucionDIV.innerHTML = solucion + input.value + palabrasCorrectas
 }
 
-//local storage
+//local storage guardar
+var almacenar = {
+	desar: function () {
+		for (let i = 0; i < arrayLocalStorage.length; i++) {
+			localStorage.setItem(arrayLocalStorage[i].vwpm, arrayLocalStorage[i].vtimer);
+		}
+	},
+};
