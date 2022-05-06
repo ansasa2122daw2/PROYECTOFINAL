@@ -19,7 +19,7 @@ window.onload = function () {
 				for (var i = 0; i < localStorage.length; i++) {
 					var fila = taula.insertRow(0);
 					//tabla enseñar local storage
-					fila.insertCell(0).innerHTML = "<table><thead><tr><th></th><th>Partida " + i + "</th></tr><thead><tr><td>" + localStorage.key(i) + "</td><td>WPM</td></tr><tr><td>" + localStorage.getItem(localStorage.key(i)) + "</td><td>TIEMPO</td></tr></table>";
+					fila.insertCell(0).innerHTML = "<table id='myTable'><thead><tr><th></th><th>Partida " + i + "</th></tr><thead><tr><td>" + localStorage.key(i) + "</td><td>WPM</td></tr><tr><td>" + localStorage.getItem(localStorage.key(i)) + "</td><td>TIEMPO</td></tr></table>";
 					// fila.insertCell(0).innerHTML = i + ")";
 					// fila.insertCell(1).innerHTML = "WPM: ";
 					// fila.insertCell(2).innerHTML = localStorage.key(i);

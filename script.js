@@ -52,7 +52,7 @@ input.addEventListener("input", () => {
 	let arrayValue = input.value.split("");
 	frasesSpan.forEach((characterS, index) => {
 		let character = arrayValue[index];
-		if (character && character === undefined) {
+		if (character[index] === undefined) {
 			characterS.classList.remove("incorrect");
 			characterS.classList.remove("correct");
 		}
@@ -240,6 +240,7 @@ function countdown() {
 let wpm = 0;
 let accuracy = 0;
 let arrayLocalStorage = [];
+// let arrayWPMGeneral = [];
 
 function check() {
 	if (!jugador && currentLevel === 0) {
@@ -292,12 +293,44 @@ function check() {
 					legend: false,
 				},
 				scales: { y: { title: { display: true, text: "WPM" } } },
-				scales: { x: { title: { display: true, text: "Errores" } } },
 			},
 		};
 
 		//para el Chart se muestre
 		const myChart = new Chart(document.getElementById("myChart"), config);
+
+		//otra tabla?
+
+		// arrayWPMGeneral.push(wpm);
+
+		// const labels2 = arrayLabel_partida;
+
+		// const data2 = {
+		// 	labels: labels2,
+		// 	datasets: [
+		// 		{
+		// 			backgroundColor: "rgb(27, 56, 16)",
+		// 			borderColor: "rgb(27, 56, 16)",
+		// 			data: arrayWPMGeneral,
+		// 		},
+		// 	],
+		// };
+
+		// const config2 = {
+		// 	type: "line",
+		// 	data: data2,
+		// 	options: {
+		// 		responsive: false,
+		// 		maintainAspectRatio: false,
+		// 		plugins: {
+		// 			legend: false,
+		// 		},
+		// 		scales: { y: { title: { display: true, text: "WPM" } } },
+		// 	},
+		// };
+
+		// //para el Chart se muestre
+		// const myChart2 = new Chart(document.getElementById("myChart2"), config2);
 
 		//botones bloqueados para que tengas que refrescar la página
 		hideText.disabled = true;
