@@ -1,16 +1,16 @@
 @font-face {
 	font-family: FUENTE;
-	src: url("./assets/Montserrat-Italic.ttf");
+	src: url("../assets/Montserrat-Italic.ttf");
 }
 
 @font-face {
 	font-family: FUENTE2;
-	src: url("./assets/DMSans-Regular.ttf");
+	src: url("../assets/DMSans-Regular.ttf");
 }
 
 @font-face {
 	font-family: FUENTE3;
-	src: url("./assets/RadioCanada-VariableFont_wdth\,wght.ttf");
+	src: url("../assets/RadioCanada-VariableFont_wdth\,wght.ttf");
 }
 
 html {
