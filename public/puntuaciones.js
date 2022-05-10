@@ -21,21 +21,6 @@ window.onload = function () {
 				let array30 = [];
 				let array60 = [];
 				for (var i = 0; i < localStorage.length; i++) {
-					// var fila = taula.insertRow(0);
-					// //tabla enseñar local storage
-					// fila.insertCell(0).innerHTML = "<table id='myTable'><thead><tr><th></th><th>Partida " + i + "</th></tr><thead><tr><td>" + localStorage.key(i) + "</td><td>WPM</td></tr><tr><td>" + localStorage.getItem(localStorage.key(i)) + "</td><td>TIEMPO</td></tr></table>";
-					// // fila.insertCell(0).innerHTML = i + ")";
-					// // fila.insertCell(1).innerHTML = "WPM: ";
-					// // fila.insertCell(2).innerHTML = localStorage.key(i);
-					// // fila.insertCell(3).innerHTML = "TIEMPO: ";
-					// // fila.insertCell(4).innerHTML = localStorage.getItem(localStorage.key(i));
-					// // fila.style.fontWeight = "bold";
-					// fila.style.fontSize = "15px";
-					// fila.style.fontFamily = "Arial";
-					// taula.style.marginTop = "10vh";
-					// taula.style.marginLeft = "60vh";
-					//chart js
-
 					arrayKeys.push(new Date(parseInt(localStorage.key(i))).toLocaleDateString());
 					let item = JSON.parse(localStorage.getItem(localStorage.key(i)));
 					switch (item.timer) {
@@ -58,14 +43,9 @@ window.onload = function () {
 					labels: labels,
 					datasets: [
 						{
-							backgroundColor: "rgb(27, 56, 16)",
-							borderColor: "rgb(27, 56, 16)",
+							backgroundColor: "#a34b60",
+							borderColor: "#a34b60",
 							data: array10,
-						},
-						{
-							backgroundColor: "rgb(255,0,0)",
-							borderColor: "rgb(255,0,0)",
-							data: array30,
 						},
 					],
 				};
@@ -85,6 +65,62 @@ window.onload = function () {
 
 				//para el Chart se muestre
 				const myChart = new Chart(document.getElementById("myChart2"), historicConfig);
+
+				//segunda tabla tiempo 30
+				const historicData3 = {
+					labels: labels,
+					datasets: [
+						{
+							backgroundColor: "#7da34b",
+							borderColor: "#7da34b",
+							data: array30,
+						},
+					],
+				};
+
+				const historicConfig3 = {
+					type: "line",
+					data: historicData3,
+					options: {
+						responsive: false,
+						maintainAspectRatio: false,
+						plugins: {
+							legend: false,
+						},
+						scales: { y: { title: { display: true, text: "WPM" } } },
+					},
+				};
+
+				//para el Chart se muestre
+				const myChart3 = new Chart(document.getElementById("myChart3"), historicConfig3);
+
+				//tercera tabla tiempo 60
+				const historicData4 = {
+					labels: labels,
+					datasets: [
+						{
+							backgroundColor: "#bec261",
+							borderColor: "#bec261",
+							data: array60,
+						},
+					],
+				};
+
+				const historicConfig4 = {
+					type: "line",
+					data: historicData4,
+					options: {
+						responsive: false,
+						maintainAspectRatio: false,
+						plugins: {
+							legend: false,
+						},
+						scales: { y: { title: { display: true, text: "WPM" } } },
+					},
+				};
+
+				//para el Chart se muestre
+				const myChart4 = new Chart(document.getElementById("myChart4"), historicConfig4);
 			}
 		},
 	};

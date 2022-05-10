@@ -298,39 +298,6 @@ function check() {
 		//para el Chart se muestre
 		const myChart = new Chart(document.getElementById("myChart"), config);
 
-		//otra tabla?
-
-		// arrayWPMGeneral.push(wpm);
-
-		// const labels2 = arrayLabel_partida;
-
-		// const data2 = {
-		// 	labels: labels2,
-		// 	datasets: [
-		// 		{
-		// 			backgroundColor: "rgb(27, 56, 16)",
-		// 			borderColor: "rgb(27, 56, 16)",
-		// 			data: arrayWPMGeneral,
-		// 		},
-		// 	],
-		// };
-
-		// const config2 = {
-		// 	type: "line",
-		// 	data: data2,
-		// 	options: {
-		// 		responsive: false,
-		// 		maintainAspectRatio: false,
-		// 		plugins: {
-		// 			legend: false,
-		// 		},
-		// 		scales: { y: { title: { display: true, text: "WPM" } } },
-		// 	},
-		// };
-
-		// //para el Chart se muestre
-		// const myChart2 = new Chart(document.getElementById("myChart2"), config2);
-
 		//botones bloqueados para que tengas que refrescar la página
 		hideText.disabled = true;
 		facilB.disabled = true;
@@ -355,6 +322,7 @@ var almacenar = {
 			timer: leveltimer,
 			wpm: parseInt(wpm),
 		};
+		//stringify para pasar el timer y wmp ^ se hace parseInt porque se pasaba como string
 		localStorage.setItem(new Date().getTime().toString(), JSON.stringify(value));
 	},
 };

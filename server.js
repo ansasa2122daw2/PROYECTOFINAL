@@ -22,8 +22,6 @@ app.get("/puntuaciones", (req, res) => {
 	res.sendFile(__dirname + "/puntuaciones.html");
 });
 
-//app.use("/solo", jsScript);
-
 app.get("/multiplayer", (req, res) => {
 	res.sendFile(__dirname + "/websockets.html");
 });
@@ -35,11 +33,13 @@ io.on("connection", (socket) => {
 	});
 });
 
-server.listen(process.env.PORT || 80, () => {
+server.listen(process.env.PORT || 3000, () => {
 	console.log("listening on *:3000");
 });
 
-//STANDALONE
-// const io = require('socket.io')();
-// io.on('connection', client => { ... });
-// io.listen(3000);
+// Para servir local en puerto 3000
+// 		npm run start
+// Para deploy a Heroku
+// 		git add .
+//		git commit -am "Comentario"
+// 		git push heroku master
