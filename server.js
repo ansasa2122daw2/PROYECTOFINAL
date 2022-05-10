@@ -26,6 +26,8 @@ app.get("/multiplayer", (req, res) => {
 	res.sendFile(__dirname + "/websockets.html");
 });
 
+//websockets
+
 io.on("connection", (socket) => {
 	console.log("a user connected");
 	socket.on("disconnect", () => {
