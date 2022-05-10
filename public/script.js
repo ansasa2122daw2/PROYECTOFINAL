@@ -43,7 +43,7 @@ const palabras = 0;
 //dificultad
 var dificultat = { facil: 10, medio: 30, dificil: 60 };
 var currentLevel = 30;
-var leveltimer = 0;
+var leveltimer = 30;
 
 //eventos
 input.addEventListener("input", () => {
@@ -239,7 +239,6 @@ function countdown() {
 //declarar valores
 let wpm = 0;
 let accuracy = 0;
-let arrayLocalStorage = [];
 // let arrayWPMGeneral = [];
 
 function check() {
@@ -261,7 +260,7 @@ function check() {
 		wpm = Math.floor((palabrasCorrectas * 60) / leveltimer).toFixed(0);
 		accuracy = Math.floor((palabrasCorrectas / solucionArray.length) * 100).toFixed(2);
 
-		solucionDIV.innerHTML = "WPM:  " + wpm + "<br/>" + "<br/>" + "ACC:  " + accuracy + "%" + "<br/>" + "<br/>" + "PALABRAS: " + solucionArray.length + " - IDIOMA: " + "Castellano" + " - TIEMPO: " + leveltimer + "s";
+		solucionDIV.innerHTML = "<div id='titulos'>WPM  " + "<div id='respuesta'>" + wpm + "</div></div>" + "<br/>" + "<br/>" + "<div id='titulos'>ACC  </div>" + "<div id='respuesta'>" + accuracy + "%" + "</div>" + "<br/>" + "<br/>" + "<br/>" + "<br/>" + "<div id='titulos'> PALABRAS: " + solucionArray.length + " - IDIOMA: " + "Castellano" + " - TIEMPO: " + leveltimer + "s" + "</div>";
 		solucionDIV.classList.add("solucionDIV");
 
 		//chart js
@@ -338,18 +337,24 @@ function check() {
 		normalB.disabled = true;
 		dificilB.disabled = true;
 
-		arrayLocalStorage.push({ vwpm: wpm, vtimer: leveltimer });
+		// let refresh = document.getElementById("refresh");
+		//refresh.disabled = false;
+		// refresh.addEventListener("click", function refrescar() {
+		// 	window.location.refresh();
+		// });
 
 		//local storage lo llamo aquí
 		almacenar.desar();
-	} // solucionDIV.innerHTML = solucion + input.value + palabrasCorrectas
+	}
 }
 
 //local storage guardar
 var almacenar = {
 	desar: function () {
-		for (let i = 0; i < arrayLocalStorage.length; i++) {
-			localStorage.setItem(arrayLocalStorage[i].vwpm, arrayLocalStorage[i].vtimer);
-		}
+		let value = {
+			timer: leveltimer,
+			wpm: parseInt(wpm),
+		};
+		localStorage.setItem(new Date().getTime().toString(), JSON.stringify(value));
 	},
 };

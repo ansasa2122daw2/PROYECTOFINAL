@@ -1,6 +1,7 @@
 Colores usados:
 #d5ded6
 #b7edbf
+#133805
 white
 black
 

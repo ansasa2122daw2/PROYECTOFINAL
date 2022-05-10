@@ -7,20 +7,22 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-// var jsScript = require("./script");
+app.use("/public", express.static(path.join(__dirname, "public")));
+app.use("/assets", express.static(path.join(__dirname, "assets")));
 
-app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.static(path.join(__dirname, "assets")));
+app.get("/", (req, res) => {
+	res.sendFile(__dirname + "/index.html");
+});
 
-// app.get("/", (req, res) => {
-// 	res.sendFile(__dirname + "/index.html");
-// });
+app.get("/solo", (req, res) => {
+	res.sendFile(__dirname + "/solojugador.html");
+});
 
-// app.get("/solo", (req, res) => {
-// 	res.sendFile(__dirname + "/solojugador.html");
-// });
+app.get("/puntuaciones", (req, res) => {
+	res.sendFile(__dirname + "/puntuaciones.html");
+});
 
-// app.use("/solo", jsScript);
+//app.use("/solo", jsScript);
 
 app.get("/multiplayer", (req, res) => {
 	res.sendFile(__dirname + "/websockets.html");

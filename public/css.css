@@ -1,16 +1,16 @@
 @font-face {
 	font-family: FUENTE;
-	src: url("./assets/Montserrat-Italic.ttf");
+	src: url("./Montserrat-Italic.ttf");
 }
 
 @font-face {
 	font-family: FUENTE2;
-	src: url("./assets/DMSans-Regular.ttf");
+	src: url("./DMSans-Regular.ttf");
 }
 
 @font-face {
 	font-family: FUENTE3;
-	src: url("./assets/RadioCanada-VariableFont_wdth\,wght.ttf");
+	src: url("./RadioCanada-VariableFont_wdth\,wght.ttf");
 }
 
 html {
@@ -222,6 +222,16 @@ body {
 	padding: 5%;
 }
 
+.expliacion {
+	display: flex;
+	flex-direction: row;
+}
+
+.videoHTML {
+	margin-left: 15px;
+	margin-top: -55px;
+}
+
 .info P {
 	font-size: 30px;
 	font-family: FUENTE;
@@ -367,9 +377,9 @@ select:focus {
 }
 
 #myChart {
-	width: 9%;
-	margin-top: -200px;
-	margin-left: 300px;
+	width: 6%;
+	margin-top: -33%;
+	margin-left: 33%;
 }
 
 .indexColor {
@@ -408,6 +418,20 @@ button {
 
 #myTable {
 	margin-left: 30vh;
+}
+
+#titulos {
+	font-family: FUENTE3;
+	font-size: 30px;
+	color: rgb(19, 56, 5);
+	margin-bottom: -10px;
+}
+
+#respuesta {
+	font-family: FUENTE3;
+	font-size: 28px;
+	color: rgb(54, 83, 55);
+	margin-bottom: -10px;
 }
 
 /* MULTIJUGADOR */
