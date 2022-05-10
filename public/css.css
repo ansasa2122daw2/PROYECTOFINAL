@@ -434,4 +434,25 @@ button {
 	margin-bottom: -10px;
 }
 
+/* puntuaciones */
+
+#myChart2 {
+	margin-top: 20vh;
+	margin-bottom: 17vh;
+	align-items: center;
+	margin-left: 25%;
+}
+
+#myChart3 {
+	margin-top: 20vh;
+	align-items: center;
+	margin-left: 25%;
+}
+
+#myChart4 {
+	margin-top: 20vh;
+	margin-bottom: 17vh;
+	margin-left: 25%;
+}
+
 /* MULTIJUGADOR */

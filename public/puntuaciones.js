@@ -21,10 +21,13 @@ window.onload = function () {
 				let array30 = [];
 				let array60 = [];
 				for (var i = 0; i < localStorage.length; i++) {
+					//se hace el locale date string para pasarlo a date y no se quede así 23823819
 					arrayKeys.push(new Date(parseInt(localStorage.key(i))).toLocaleDateString());
 					let item = JSON.parse(localStorage.getItem(localStorage.key(i)));
+					//switch case para que cuando coincida el timer con el caso entre
 					switch (item.timer) {
 						case 10:
+							array10.reverse();
 							array10.push(item.wpm);
 							break;
 						case 30:
@@ -43,6 +46,7 @@ window.onload = function () {
 					labels: labels,
 					datasets: [
 						{
+							label: "TIEMPO 10 SEGUNDOS",
 							backgroundColor: "#a34b60",
 							borderColor: "#a34b60",
 							data: array10,
@@ -56,9 +60,6 @@ window.onload = function () {
 					options: {
 						responsive: false,
 						maintainAspectRatio: false,
-						plugins: {
-							legend: false,
-						},
 						scales: { y: { title: { display: true, text: "WPM" } } },
 					},
 				};
@@ -71,6 +72,7 @@ window.onload = function () {
 					labels: labels,
 					datasets: [
 						{
+							label: "TIEMPO 30 SEGUNDOS",
 							backgroundColor: "#7da34b",
 							borderColor: "#7da34b",
 							data: array30,
@@ -84,9 +86,6 @@ window.onload = function () {
 					options: {
 						responsive: false,
 						maintainAspectRatio: false,
-						plugins: {
-							legend: false,
-						},
 						scales: { y: { title: { display: true, text: "WPM" } } },
 					},
 				};
@@ -99,6 +98,7 @@ window.onload = function () {
 					labels: labels,
 					datasets: [
 						{
+							label: "TIEMPO 60 SEGUNDOS",
 							backgroundColor: "#bec261",
 							borderColor: "#bec261",
 							data: array60,
@@ -112,9 +112,6 @@ window.onload = function () {
 					options: {
 						responsive: false,
 						maintainAspectRatio: false,
-						plugins: {
-							legend: false,
-						},
 						scales: { y: { title: { display: true, text: "WPM" } } },
 					},
 				};
