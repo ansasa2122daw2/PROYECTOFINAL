@@ -27,8 +27,8 @@ window.onload = function () {
 					//switch case para que cuando coincida el timer con el caso entre
 					switch (item.timer) {
 						case 10:
-							array10.reverse();
 							array10.push(item.wpm);
+							console.log(array10);
 							break;
 						case 30:
 							array30.push(item.wpm);

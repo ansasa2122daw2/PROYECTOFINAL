@@ -239,7 +239,6 @@ function countdown() {
 //declarar valores
 let wpm = 0;
 let accuracy = 0;
-// let arrayWPMGeneral = [];
 
 function check() {
 	if (!jugador && currentLevel === 0) {
@@ -248,13 +247,10 @@ function check() {
 		let solucionArray = solucion.split(" ");
 		let inputArray = input.value.split(" ");
 		let palabrasCorrectas = 0;
-		let errores = 0;
 
 		for (let i = 0; i < solucionArray.length; i++) {
 			if (solucionArray[i] === inputArray[i]) {
 				palabrasCorrectas++;
-			} else {
-				errores++;
 			}
 		}
 		wpm = Math.floor((palabrasCorrectas * 60) / leveltimer).toFixed(0);
@@ -314,7 +310,6 @@ function check() {
 		almacenar.desar();
 	}
 }
-
 //local storage guardar
 var almacenar = {
 	desar: function () {
@@ -326,3 +321,4 @@ var almacenar = {
 		localStorage.setItem(new Date().getTime().toString(), JSON.stringify(value));
 	},
 };
+("new Date().getTime().toString()");

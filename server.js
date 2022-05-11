@@ -28,11 +28,35 @@ app.get("/multiplayer", (req, res) => {
 
 //websockets
 
+let jugador1;
+let jugador2;
+let espectador;
+let jugadores = [];
+let espectadores = [];
+
 io.on("connection", (socket) => {
-	console.log("a user connected");
-	socket.on("disconnect", () => {
-		console.log("user disconnected");
-	});
+	socket.on("open", () => console.log("Jugador conectado", socket.id)); //Jugador conectado
+	socket.on("close", () => console.log("Jugador desconectado")); //Jugador desconectado
+
+	// socket.on("conexionGame", (data) => {
+	// 	//Recibe los mensajes del cliente
+
+	// 	if (jugador1 == undefined) {
+	// 		jugador1 = { id: data.jugador1 };
+	// 		jugadores.push(jugador1);
+	// 		console.log(jugadores);
+	// 	} else {
+	// 		if (jugador2 == undefined) {
+	// 			jugador2 = { id: data.jugador };
+	// 			jugadores.push(jugador2);
+	// 			console.log(jugadores);
+	// 		} else {
+	// 			espectador = { id: data.jugador };
+	// 			espectadores.push(espectador);
+	// 		}
+	// 	}
+	// 	socket.emit("conexionGame", { jugadores: jugadores, espectadores: espectadores }); //Envia mensaje a los clientes
+	// });
 });
 
 server.listen(process.env.PORT || 3000, () => {
