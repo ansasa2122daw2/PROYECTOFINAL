@@ -28,16 +28,21 @@ app.get("/multiplayer", (req, res) => {
 
 //websockets
 
-let jugador1;
-let jugador2;
-let espectador;
-let jugadores = [];
-let espectadores = [];
+// let jugador1;
+// let jugador2;
+// let espectador;
+// let jugadores = [];
+// let espectadores = [];
 
 io.on("connection", (socket) => {
-	socket.on("open", () => console.log("Jugador conectado", socket.id)); //Jugador conectado
-	socket.on("close", () => console.log("Jugador desconectado")); //Jugador desconectado
+	console.log("conectado", socket.id);
+	socket.emit("open", () => console.log("Jugador conectado", socket.id)); //Jugador conectado hace emit
+	socket.emit("close", () => console.log("Jugador desconectado")); //Jugador desconectado
+	socket.on("");
 
+	socket.on("jugador1JOIN", (data) => {
+		console.log(data.jugador1);
+	});
 	// socket.on("conexionGame", (data) => {
 	// 	//Recibe los mensajes del cliente
 
@@ -58,6 +63,8 @@ io.on("connection", (socket) => {
 	// 	socket.emit("conexionGame", { jugadores: jugadores, espectadores: espectadores }); //Envia mensaje a los clientes
 	// });
 });
+
+//server
 
 server.listen(process.env.PORT || 3000, () => {
 	console.log("listening on *:3000");
