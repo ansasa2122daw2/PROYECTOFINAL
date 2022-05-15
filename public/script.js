@@ -1,7 +1,7 @@
 //CARGO LA PAGINA CON INIT
 window.addEventListener("load", init);
 
-//tengo los parafos hardcoded
+//parafos hardcoded
 // const parafos = [
 // 	"Vida antes que muerte. ¿Qué significaba el dicho? ¿Que los hombres deberían buscar la vida antes que buscar la muerte? Eso era obvio. ¿O significaba otra cosa? ¿Que la vida venía antes que la muerte? Una vez más, obvio. Y sin embargo las palabras sencillas le hablaban. La muerte viene, susurraban. La muerte les viene a todos. Pero la vida viene primero. Saboréala. La muerte es el destino. Pero el viaje, eso es la vida. Eso es lo que importa.",
 // 	"Hay dos tipos de personas en el mundo, hijo -dijo su padre severamente-. Los que salvan vidas. Y los que las quitan. - ¿Y los que protegen y defienden? ¿Los que salvan vidas quitando vidas? Su padre bufó. -Eso es como intentar detener una tormenta soplando más fuerte. Ridículo. No se puede proteger matando.",
@@ -69,12 +69,6 @@ input.addEventListener(
 );
 
 //fetch api
-let parafos;
-// const fetch = async () => {
-// 	const response = await axios.get("../api.json");
-// 	console.log(response);
-// };
-
 function parrafosfetch() {
 	fetch("/public/api.json")
 		.then(function (response) {
@@ -91,18 +85,9 @@ function parrafosfetch() {
 
 //FUNCIÓN PRINCIPAL
 function init() {
+	//llamar funcion fetch
 	parrafosfetch();
-	// fetch("../api.json")
-	// 	.then((response) => response.json())
-	// 	.then((data) => {
-	// 		console.log(data);
-	// 	})
-	// 	.catch((err) => {
-	// 		console.log(err);
-	// 	});
 
-	//usar la función muestra
-	//muestra(parafos);
 	//si timer 0 entonces:
 	setInterval(check, 50);
 
