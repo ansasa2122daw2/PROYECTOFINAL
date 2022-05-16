@@ -408,6 +408,10 @@ button {
 	overflow: hidden;
 }
 
+#flex {
+	display: flex;
+}
+
 #tituloP {
 	font-family: FUENTE3;
 	font-weight: bold;
@@ -424,14 +428,24 @@ button {
 	font-family: FUENTE3;
 	font-size: 30px;
 	color: rgb(19, 56, 5);
+	margin-bottom: -6px;
+}
+
+#que {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	font-family: FUENTE3;
+	font-size: 35px;
+	color: rgb(19, 56, 5);
 	margin-bottom: -10px;
+	text-decoration: underline;
 }
 
 #respuesta {
 	font-family: FUENTE3;
 	font-size: 28px;
 	color: rgb(54, 83, 55);
-	margin-bottom: -10px;
+	margin-bottom: -8px;
 }
 
 /* puntuaciones */
@@ -457,12 +471,47 @@ button {
 
 /* MULTIJUGADOR */
 
-/*barra enemigo*/
-#myProgress {
-	position: relative;
-	width: 100%;
-	height: 30px;
-	background-color: #ddd;
+#bodymulti {
+	margin-top: -7em;
+	padding: 8em;
+	/* width: 770px;
+	padding: 15%;
+	margin-left: 20vh;
+	margin-top: -10vh;
+	border-radius: 10px;
+	align-items: center; */
+	scroll-behavior: smooth;
+}
+
+/*barra enemigo y tuya*/
+.jugadores {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+#jugador1 img {
+	margin-left: -7em;
+	margin-top: 2em;
+	margin-bottom: 0%;
+	width: 5em;
+}
+#jugador1 h2 {
+	font-family: FUENTE3;
+	font-size: 15px;
+	margin-top: -4em;
+}
+
+#jugador2 img {
+	margin-left: -7em;
+	margin-top: 2em;
+	margin-bottom: 0%;
+	width: 5em;
+}
+
+#jugador2 h2 {
+	font-family: FUENTE3;
+	font-size: 15px;
+	margin-top: -4em;
 }
 
 #myBar {
@@ -470,4 +519,10 @@ button {
 	width: 1%;
 	height: 100%;
 	background-color: #4caf50;
+}
+
+progress {
+	position: relative;
+	width: 100%;
+	height: 30px;
 }

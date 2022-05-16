@@ -53,9 +53,14 @@ io.on("connection", (socket) => {
 		socket.broadcast.emit("actualizarProgreso", { progresoEnemigo: data.progreso });
 	}); //Envia mensaje a los clientes de la sala});
 
+	socket.on("puntuacionesEnemigo", (data) => {
+		console.log("puntuacionesEnemigo", data);
+		//enviar puntuacion wpm enemiga
+		socket.broadcast.emit("puntuacionesFinal", { finalEnemigo: data });
+	});
+
 	socket.on("conexionGame", (data) => {
 		// Recibe los mensajes del cliente
-
 		let frase = [
 			"Debía de estar en una fiesta. Tengo los bolsillos vacíos y no llevo abrigo, así que no puedo haberme alejado demasiado. Es tranquilizador. A juzgar por la luz, es por la mañana, así que he debido de pasar toda la noche aquí fuera. Nadie se viste para pasar la velada a solas, lo cual significa que debe de haber alguien que ya sabe que he desaparecido. Seguramente, más allá de esos árboles, haya una casa que despierta alarmada, ¿y quizá grupos de búsqueda que tratan de encontrarme? Exploro los árboles con la mirada, en cierto modo con la esperanza de ver a mis amigos salir de entre el follaje para escoltarme de vuelta a casa con palmadas en la espalda y bromas amables, pero las ensoñaciones no me sacarán de este bosque y no puedo demorarme aquí esperando un rescate.",
 		];
@@ -75,7 +80,7 @@ io.on("connection", (socket) => {
 			}
 		}
 		socket.join("sala1"); // En un futuro, tener varias salas
-		io.to("sala1").emit("conexionGame", { jugadores: jugadores, espectadores: espectadores, frase: frase }); //Envia mensaje a los clientes de la sala
+		socket.to("sala1").emit("conexionGame", { jugadores: jugadores, espectadores: espectadores, frase: frase }); //Envia mensaje a los clientes de la sala
 	});
 });
 
