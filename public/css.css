@@ -408,10 +408,6 @@ button {
 	overflow: hidden;
 }
 
-#flex {
-	display: flex;
-}
-
 #tituloP {
 	font-family: FUENTE3;
 	font-weight: bold;
@@ -424,11 +420,60 @@ button {
 	margin-left: 30vh;
 }
 
-#titulos {
+#flex {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 5px;
+	margin: 20px 20px;
+	grid-template-areas:
+		"tu enemigo"
+		"tituloWPM titulosEWPM"
+		"respuestaTu RespuestaEWPM"
+		"tituloACC titulosEACC"
+		"respuestaACC respuestaEACC";
+}
+
+#queTu {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	font-family: FUENTE3;
+	font-size: 35px;
+	color: rgb(19, 56, 5);
+	margin-bottom: -10px;
+	text-decoration: underline;
+	grid-area: tu;
+}
+
+#tituloTuWPM {
 	font-family: FUENTE3;
 	font-size: 30px;
 	color: rgb(19, 56, 5);
 	margin-bottom: -6px;
+	grid-area: tituloWPM;
+}
+
+#respuestaTuWPM {
+	font-family: FUENTE3;
+	font-size: 28px;
+	color: rgb(54, 83, 55);
+	margin-bottom: -8px;
+	grid-area: respuestaTu;
+}
+
+#tituloTuACC {
+	font-family: FUENTE3;
+	font-size: 30px;
+	color: rgb(19, 56, 5);
+	margin-bottom: -6px;
+	grid-area: tituloACC;
+}
+
+#respuestaTuACC {
+	font-family: FUENTE3;
+	font-size: 28px;
+	color: rgb(54, 83, 55);
+	margin-bottom: -8px;
+	grid-area: respuestaACC;
 }
 
 #que {
@@ -439,13 +484,38 @@ button {
 	color: rgb(19, 56, 5);
 	margin-bottom: -10px;
 	text-decoration: underline;
+	grid-area: enemigo;
 }
 
-#respuesta {
+#titulosEWPM {
+	font-family: FUENTE3;
+	font-size: 30px;
+	color: rgb(19, 56, 5);
+	margin-bottom: -6px;
+	grid-area: titulosEWPM;
+}
+
+#respuestaEWPM {
 	font-family: FUENTE3;
 	font-size: 28px;
 	color: rgb(54, 83, 55);
 	margin-bottom: -8px;
+	grid-area: RespuestaEWPM;
+}
+
+#titulosEACC {
+	font-family: FUENTE3;
+	font-size: 30px;
+	color: rgb(19, 56, 5);
+	grid-area: titulosEACC;
+}
+
+#respuestaEACC {
+	font-family: FUENTE3;
+	font-size: 28px;
+	color: rgb(54, 83, 55);
+	margin-bottom: -8px;
+	grid-area: respuestaEACC;
 }
 
 /* puntuaciones */

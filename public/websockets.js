@@ -160,7 +160,24 @@ socket.on("connect", function () {
 				if (data.finalEnemigo) {
 					console.log("wpm enemigo: " + data.finalEnemigo);
 					solucionDIV.innerHTML =
-						"<div id='flex'><div id='que'>TU PUNTUACIÓN</div><div id='titulos'>WPM  " + "<div id='respuesta'>" + wpm + "</div></div>" + "<br/>" + "<br/>" + "<div id='titulos'>ACC  </div>" + "<div id='respuesta'>" + accuracy + "%" + "</div><div id='que'>ENEMIGO</div><div id='titulos'>WPM ENMIGO: " + "<div id='respuesta'>" + data.finalEnemigo.wpm + "</div></div>" + "<div id='titulos'>ACC ENMIGO: " + "<div id='respuesta'>" + data.finalEnemigo.acc + "</div></div></div></div>";
+						"<div id='flex'><div id='queTu'>TU PUNTUACIÓN</div><div id='tituloTuWPM'>WPM  " +
+						"<div id='respuestaTuWPM'>" +
+						wpm +
+						"</div></div>" +
+						"<br/>" +
+						"<br/>" +
+						"<div id='tituloTuACC'>ACC  </div>" +
+						"<div id='respuestaTuACC'>" +
+						accuracy +
+						"%" +
+						"</div><div id='que'>ENEMIGO</div><div id='titulosEWPM'>WPM ENMIGO: " +
+						"<div id='respuestaEWPM'>" +
+						data.finalEnemigo.wpm +
+						"</div></div>" +
+						"<div id='titulosEACC'>ACC ENMIGO: " +
+						"<div id='respuestaEACC'>" +
+						data.finalEnemigo.acc +
+						"</div></div></div></div>";
 					"<br/>" + "<br/>" + "<br/>" + "<br/>" + "<div id='titulos'> PALABRAS: " + solucionArray.length + " - IDIOMA: " + "Castellano" + " - TIEMPO: " + leveltimer + "s" + "</div>";
 					solucionDIV.classList.add("solucionDIV");
 				} else {
