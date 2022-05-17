@@ -85,7 +85,15 @@ io.on("connection", (socket) => {
 });
 
 // mongo
+// let MongoClient = require("mongodb").MongoClient;
+// let url = "mongodb://localhost:27017/";
+// const { Jugador } = require("./POO");
+// //enviar puntuaciones MONGO
+// app.post("/guardarScoreboard"), (req, res) => {};
 
+//mostrar puntuaciones MONGO
+
+/* */
 //server
 server.listen(process.env.PORT || 3000, () => {
 	console.log("listening on *:3000");
