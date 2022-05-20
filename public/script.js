@@ -307,12 +307,6 @@ function check() {
 		normalB.disabled = true;
 		dificilB.disabled = true;
 
-		// let refresh = document.getElementById("refresh");
-		//refresh.disabled = false;
-		// refresh.addEventListener("click", function refrescar() {
-		// 	window.location.refresh();
-		// });
-
 		//local storage lo llamo aquí
 		almacenar.desar();
 	}

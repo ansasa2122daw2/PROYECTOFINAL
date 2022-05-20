@@ -518,6 +518,20 @@ button {
 	grid-area: respuestaEACC;
 }
 
+/* puntuaciones un jugador */
+#titulos {
+	font-family: FUENTE3;
+	font-size: 30px;
+	color: rgb(19, 56, 5);
+}
+
+#respuesta {
+	font-family: FUENTE3;
+	font-size: 28px;
+	color: rgb(54, 83, 55);
+	margin-bottom: -8px;
+}
+
 /* puntuaciones */
 
 #myChart2 {

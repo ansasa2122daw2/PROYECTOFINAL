@@ -158,7 +158,6 @@ socket.on("connect", function () {
 
 			socket.on("puntuacionesFinal", (data) => {
 				if (data.finalEnemigo) {
-					console.log("wpm enemigo: " + data.finalEnemigo);
 					solucionDIV.innerHTML =
 						"<div id='flex'><div id='queTu'>TU PUNTUACIÓN</div><div id='tituloTuWPM'>WPM  " +
 						"<div id='respuestaTuWPM'>" +
@@ -166,11 +165,11 @@ socket.on("connect", function () {
 						"</div></div>" +
 						"<br/>" +
 						"<br/>" +
-						"<div id='tituloTuACC'>ACC  </div>" +
+						"<div id='tituloTuACC'>ACC  " +
 						"<div id='respuestaTuACC'>" +
 						accuracy +
 						"%" +
-						"</div><div id='que'>ENEMIGO</div><div id='titulosEWPM'>WPM ENMIGO: " +
+						"</div></div><div id='que'>ENEMIGO</div><div id='titulosEWPM'>WPM ENMIGO: " +
 						"<div id='respuestaEWPM'>" +
 						data.finalEnemigo.wpm +
 						"</div></div>" +
@@ -180,12 +179,24 @@ socket.on("connect", function () {
 						"</div></div></div></div>";
 					"<br/>" + "<br/>" + "<br/>" + "<br/>" + "<div id='titulos'> PALABRAS: " + solucionArray.length + " - IDIOMA: " + "Castellano" + " - TIEMPO: " + leveltimer + "s" + "</div>";
 					solucionDIV.classList.add("solucionDIV");
+					$.ajax({
+						url: "/guardarPuntuacion",
+						type: "POST",
+						contentType: "application/json",
+						dataType: "json",
+						processData: false,
+						data: { nombreJugador: "algo porfa", wpm: 20, acc: 60 },
+						success: function (data) {
+							alert("aaaaaaaaaaaaaa" + JSON.stringify(data[0]));
+						},
+						error: function (err) {
+							console.log("error: " + err);
+						},
+					});
 				} else {
 					solucionDIV.innerHTML = "Esperando a que el adversario acabe...";
 				}
-			});
-			// solucionDIV.innerHTML = "<div id='que'>TU PUNTUACIÓN</div><div id='titulos'>WPM  " + "<div id='respuesta'>" + wpm + "</div></div>" + "<br/>" + "<br/>" + "<div id='titulos'>ACC  </div>" + "<div id='respuesta'>" + accuracy + "%" + "</div>" + "<br/>" + "<br/>" + "<br/>" + "<br/>" + "<div id='titulos'> PALABRAS: " + solucionArray.length + " - IDIOMA: " + "Castellano" + " - TIEMPO: " + leveltimer + "s" + "</div>";
-			// solucionDIV.classList.add("solucionDIV");
+			}); //{ nombreJugador: "Andrea", wpm: "120", accuracy: "60" }
 		}
 	}
 

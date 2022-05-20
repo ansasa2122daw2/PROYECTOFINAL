@@ -7,6 +7,12 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// mongo
+let MongoClient = require("mongodb").MongoClient;
+let url = "mongodb://localhost:27017/";
+
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 
@@ -24,6 +30,14 @@ app.get("/puntuaciones", (req, res) => {
 
 app.get("/multiplayer", (req, res) => {
 	res.sendFile(__dirname + "/websockets.html");
+});
+
+app.post("/guardarPuntuacion", (req, res) => {
+	console.log(req.data);
+	console.log("REQ: " + req.req);
+	console.log("................................. ", req.nombreJugador);
+	// guardarPuntuaciones(req.nombreJugador, req.wpm, req.accuracy);
+	// guardarPuntuaciones("Andrea", 50, 70);
 });
 
 //websockets
@@ -84,14 +98,35 @@ io.on("connection", (socket) => {
 	});
 });
 
-// mongo
-// let MongoClient = require("mongodb").MongoClient;
-// let url = "mongodb://localhost:27017/";
-// const { Jugador } = require("./POO");
-// //enviar puntuaciones MONGO
-// app.post("/guardarScoreboard"), (req, res) => {};
+//enviar puntuaciones MONGO
+function guardarPuntuaciones(nombreJugador, wpm, accuracy) {
+	//cogido de otro codigo no va
+	MongoClient.connect(url, function (err, db) {
+		if (err) throw err;
+		var dbo = db.db("PEEPOTYPE");
+		console.log(nombreJugador, wpm, accuracy);
+
+		dbo.collection("puntuaciones").insertOne({ jugador: nombreJugador, wpm: wpm, acc: accuracy }, function (err, res) {
+			if (err) throw err;
+			db.close();
+		});
+	});
+}
 
 //mostrar puntuaciones MONGO
+app.get("/puntuaciones", (req, res) => {
+	MongoClient.connect(url, function (err, db) {
+		if (err) throw err;
+		var dbo = db.db("PEEPOTYPE");
+		dbo.collection("puntuaciones")
+			.find({})
+			.toArray(function (err, res) {
+				console.log("HOLAAA" + res);
+				console.dir(res);
+				callback(res);
+			});
+	});
+});
 
 /* */
 //server
