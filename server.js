@@ -33,11 +33,10 @@ app.get("/multiplayer", (req, res) => {
 });
 
 app.post("/guardarPuntuacion", (req, res) => {
-	console.log(req.data);
-	console.log("REQ: " + req.req);
-	console.log("................................. ", req.nombreJugador);
-	// guardarPuntuaciones(req.nombreJugador, req.wpm, req.accuracy);
-	// guardarPuntuaciones("Andrea", 50, 70);
+	let wpm = req.body.wpm;
+	let accuracy = req.body.acc;
+
+	guardarPuntuaciones(req.body.nombre, wpm, accuracy);
 });
 
 //websockets
@@ -104,10 +103,10 @@ function guardarPuntuaciones(nombreJugador, wpm, accuracy) {
 	MongoClient.connect(url, function (err, db) {
 		if (err) throw err;
 		var dbo = db.db("PEEPOTYPE");
-		console.log(nombreJugador, wpm, accuracy);
-
-		dbo.collection("puntuaciones").insertOne({ jugador: nombreJugador, wpm: wpm, acc: accuracy }, function (err, res) {
+		var myobj = { nombre: nombreJugador, wpm: wpm, accuracy: accuracy };
+		dbo.collection("puntuaciones").insertOne(myobj, function (err, res) {
 			if (err) throw err;
+			console.log("1 document inserted");
 			db.close();
 		});
 	});

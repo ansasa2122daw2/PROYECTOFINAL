@@ -180,17 +180,15 @@ socket.on("connect", function () {
 					"<br/>" + "<br/>" + "<br/>" + "<br/>" + "<div id='titulos'> PALABRAS: " + solucionArray.length + " - IDIOMA: " + "Castellano" + " - TIEMPO: " + leveltimer + "s" + "</div>";
 					solucionDIV.classList.add("solucionDIV");
 					$.ajax({
-						url: "/guardarPuntuacion",
+						url: "guardarPuntuacion",
 						type: "POST",
-						contentType: "application/json",
-						dataType: "json",
-						processData: false,
-						data: { nombreJugador: "algo porfa", wpm: 20, acc: 60 },
-						success: function (data) {
-							alert("aaaaaaaaaaaaaa" + JSON.stringify(data[0]));
+						data: {
+							nombre: "nombre",
+							wpm: wpm,
+							acc: accuracy,
 						},
-						error: function (err) {
-							console.log("error: " + err);
+						success: function (data) {
+							console.log(data);
 						},
 					});
 				} else {
