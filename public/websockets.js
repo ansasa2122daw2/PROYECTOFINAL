@@ -4,6 +4,7 @@ socket.on("connect", function () {
 	window.addEventListener("load", init);
 
 	let solucion = [];
+	let isFlag = false;
 
 	//DOM
 	let frases = document.getElementById("randomize");
@@ -138,6 +139,11 @@ socket.on("connect", function () {
 	let wpm = 0;
 	let accuracy = 0;
 
+	// function inputBoton() {
+	// 	if (!jugador && currentLevel === 0) {
+	// 	}
+	// }
+
 	function check() {
 		if (!jugador && currentLevel === 0) {
 			input.disabled = "true";
@@ -177,24 +183,12 @@ socket.on("connect", function () {
 						"<div id='respuestaEACC'>" +
 						data.finalEnemigo.acc +
 						"</div></div></div></div>";
-					"<br/>" + "<br/>" + "<br/>" + "<br/>" + "<div id='titulos'> PALABRAS: " + solucionArray.length + " - IDIOMA: " + "Castellano" + " - TIEMPO: " + leveltimer + "s" + "</div>";
+
 					solucionDIV.classList.add("solucionDIV");
-					$.ajax({
-						url: "guardarPuntuacion",
-						type: "POST",
-						data: {
-							nombre: "nombre",
-							wpm: wpm,
-							acc: accuracy,
-						},
-						success: function (data) {
-							console.log(data);
-						},
-					});
 				} else {
 					solucionDIV.innerHTML = "Esperando a que el adversario acabe...";
 				}
-			}); //{ nombreJugador: "Andrea", wpm: "120", accuracy: "60" }
+			});
 		}
 	}
 

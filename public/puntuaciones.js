@@ -1,5 +1,14 @@
 //window onload que carga los datos guardados en el local storage
 window.onload = function () {
+	//get puntuaciones mongo
+	$.ajax({
+		url: "getPuntuaciones",
+		type: "GET",
+		success: function (data) {
+			console.log(data);
+		},
+	});
+
 	//puntuaciones localstorage
 	var almacenar = {
 		taula: document.getElementById("taula"),
@@ -28,7 +37,6 @@ window.onload = function () {
 					switch (item.timer) {
 						case 10:
 							array10.push(item.wpm);
-							console.log(array10);
 							break;
 						case 30:
 							array30.push(item.wpm);

@@ -5,10 +5,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="./public/css.css" rel="stylesheet" />
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
 		<script src="/socket.io/socket.io.js"></script>
 		<title>Peepotype</title>
 	</head>
-	<body>
+	<body onselectstart="return false">
 		<div class="header2">
 			<a href="/" class="logo">PEEPOTYPE</a>
 			<div class="header-right">
@@ -32,6 +33,7 @@
 				</div>
 			</div>
 		</div>
+		<div id="inputboton"></div>
 		<div id="bodymulti">
 			<div id="typing-texto">
 				<h2 id="randomize"></h2>
@@ -48,7 +50,8 @@
 						</li>
 					</ul>
 				</div>
-				<div id="boton"></div>
+				<!-- <input type="text" id="inputNombre" />
+				<button id="boton">GUARDA</button> -->
 			</div>
 		</div>
 	</body>

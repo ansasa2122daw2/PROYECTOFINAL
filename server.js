@@ -28,6 +28,20 @@ app.get("/puntuaciones", (req, res) => {
 	res.sendFile(__dirname + "/puntuaciones.html");
 });
 
+app.get("/getPuntuaciones", (req, res) => {
+	MongoClient.connect(url, function (err, db) {
+		if (err) throw err;
+		var dbo = db.db("PEEPOTYPE");
+		dbo.collection("puntuaciones")
+			.find({})
+			.toArray(function (err, data) {
+				if (err) throw err;
+				console.log(data);
+				db.close();
+			});
+	});
+});
+
 app.get("/multiplayer", (req, res) => {
 	res.sendFile(__dirname + "/websockets.html");
 });
@@ -99,7 +113,6 @@ io.on("connection", (socket) => {
 
 //enviar puntuaciones MONGO
 function guardarPuntuaciones(nombreJugador, wpm, accuracy) {
-	//cogido de otro codigo no va
 	MongoClient.connect(url, function (err, db) {
 		if (err) throw err;
 		var dbo = db.db("PEEPOTYPE");
@@ -112,20 +125,19 @@ function guardarPuntuaciones(nombreJugador, wpm, accuracy) {
 	});
 }
 
-//mostrar puntuaciones MONGO
-app.get("/puntuaciones", (req, res) => {
-	MongoClient.connect(url, function (err, db) {
-		if (err) throw err;
-		var dbo = db.db("PEEPOTYPE");
-		dbo.collection("puntuaciones")
-			.find({})
-			.toArray(function (err, res) {
-				console.log("HOLAAA" + res);
-				console.dir(res);
-				callback(res);
-			});
-	});
-});
+// function getPuntuaciones() {
+// 	MongoClient.connect(url, function (err, db) {
+// 		if (err) throw err;
+// 		var dbo = db.db("PEEPOTYPE");
+// 		dbo.collection("puntuaciones")
+// 			.find({})
+// 			.toArray(function (err, data) {
+// 				if (err) throw err;
+// 				console.log(data);
+// 				db.close();
+// 			});
+// 	});
+// }
 
 /* */
 //server

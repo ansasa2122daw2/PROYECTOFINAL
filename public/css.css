@@ -20,6 +20,11 @@ html {
 body {
 	background-color: #b7edbf;
 	overflow-x: hidden;
+	width: 100%;
+}
+
+#bodyPun {
+	width: 100%;
 }
 
 /* HEADER */
@@ -168,10 +173,11 @@ body {
 
 .botones {
 	background-color: white;
-	width: 100%;
+	width: 105%;
 	margin: auto;
 	height: 450px;
-	margin-top: -10%;
+	margin-top: -30%;
+	margin-left: -1em;
 }
 
 .tituloB {
@@ -267,6 +273,33 @@ body {
 .uno {
 	width: 5%;
 	height: 5%;
+}
+
+/*:::::Pie de Pagina*/
+.pie-pagina {
+	width: 105%;
+	background-color: #acb1acca;
+	margin-bottom: -2em;
+	margin-left: -1em;
+}
+
+.pie-pagina .grupo-2 {
+	background-color: #858a85;
+	padding: 15px 10px;
+	text-align: center;
+	color: #fff;
+	font-family: FUENTE;
+}
+.pie-pagina .grupo-2 small {
+	font-size: 15px;
+}
+@media screen and (max-width: 800px) {
+	.pie-pagina .grupo-1 {
+		width: 90%;
+		grid-template-columns: repeat(1, 1fr);
+		grid-gap: 30px;
+		padding: 35px 0px;
+	}
 }
 
 /* SOLO UN JUGADOR */
@@ -413,6 +446,7 @@ button {
 	font-weight: bold;
 	text-align: center;
 	margin-top: 70px;
+	margin-bottom: 3em;
 	font-size: 30px;
 }
 
@@ -535,25 +569,31 @@ button {
 /* puntuaciones */
 
 #myChart2 {
-	margin-top: 20vh;
 	margin-bottom: 17vh;
 	align-items: center;
-	margin-left: 25%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #myChart3 {
 	margin-top: 20vh;
 	align-items: center;
-	margin-left: 25%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #myChart4 {
 	margin-top: 20vh;
 	margin-bottom: 17vh;
-	margin-left: 25%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* MULTIJUGADOR */
+
+#randomize {
+	cursor: default;
+}
 
 #bodymulti {
 	margin-top: -7em;

@@ -13,6 +13,8 @@ window.addEventListener("load", init);
 
 let solucion = [];
 
+let isFlag = false;
+
 //DOM
 let frases = document.getElementById("randomize");
 let input = document.getElementById("input");
@@ -248,8 +250,8 @@ let wpm = 0;
 let accuracy = 0;
 
 function check() {
-	if (!jugador && currentLevel === 0) {
-		input.disabled = "true";
+	if (!jugador && currentLevel === 0 && !isFlag) {
+		isFlag = true;
 
 		let solucionArray = solucion.split(" ");
 		let inputArray = input.value.split(" ");
@@ -264,6 +266,7 @@ function check() {
 		accuracy = Math.floor((palabrasCorrectas / solucionArray.length) * 100).toFixed(2);
 
 		solucionDIV.innerHTML = "<div id='titulos'>WPM  " + "<div id='respuesta'>" + wpm + "</div></div>" + "<br/>" + "<br/>" + "<div id='titulos'>ACC  </div>" + "<div id='respuesta'>" + accuracy + "%" + "</div>" + "<br/>" + "<br/>" + "<br/>" + "<br/>" + "<div id='titulos'> PALABRAS: " + solucionArray.length + " - IDIOMA: " + "Castellano" + " - TIEMPO: " + leveltimer + "s" + "</div>";
+		+"<br/>";
 		solucionDIV.classList.add("solucionDIV");
 
 		//chart js
@@ -309,6 +312,45 @@ function check() {
 
 		//local storage lo llamo aquí
 		almacenar.desar();
+
+		//mongo
+		let main = document.getElementById("inputboton");
+		let nombrePuntuacion = document.createElement("input");
+		let buttonEnviar = document.createElement("button");
+
+		nombrePuntuacion.style.width = "20%";
+		nombrePuntuacion.style.margin = "3rem";
+		buttonEnviar.style.padding = "3px";
+
+		nombrePuntuacion.setAttribute("id", "nombrePuntuacion");
+		nombrePuntuacion.setAttribute("type", "text");
+		buttonEnviar.setAttribute("id", "buttonEnviar");
+		buttonEnviar.type = "button";
+		buttonEnviar.innerHTML = "Envia";
+		nombrePuntuacion.placeholder = "Escribe tu nombre";
+
+		main.appendChild(nombrePuntuacion);
+		main.appendChild(buttonEnviar);
+
+		let nombre = document.getElementById("nombrePuntuacion");
+
+		document.getElementById("buttonEnviar").addEventListener("click", () => guardar(nombre.value));
+		//addEventListener("click", guardar(nombre.value), false);
+
+		function guardar(nombre) {
+			$.ajax({
+				url: "guardarPuntuacion",
+				type: "POST",
+				data: {
+					nombre: nombre,
+					wpm: wpm,
+					acc: accuracy,
+				},
+				success: function (data) {
+					console.log(data);
+				},
+			});
+		}
 	}
 }
 //local storage guardar
