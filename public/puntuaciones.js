@@ -8,7 +8,7 @@ window.onload = function () {
 			console.log(data);
 			for (let i = 0; i < data.length; i++) {
 				var fila = taula.insertRow(0);
-				fila.insertCell(0).innerHTML = "<div id='tabla'><table><thead><tr><th></th><th>Partida " + i + "</th></tr><thead><tr><td>" + data[i].nombre + "</td><td>Nombre</td></tr><tr><td>" + data[i].wpm + "</td><td>WPM</td></tr><tr><td>" + data[i].accuracy + "</td><td>Accuracy</td></tr></table></div>";
+				fila.insertCell(0).innerHTML = "<div id='tabla'><table><thead><tr><th></th><th> - </th></tr><thead><tr><td>" + data[i].nombre + "</td><td>Nombre</td></tr><tr><td>" + data[i].wpm + "</td><td>WPM</td></tr><tr><td>" + data[i].accuracy + "</td><td>Accuracy</td></tr></table></div>";
 			}
 		},
 	});

@@ -247,7 +247,15 @@ body {
 }
 
 .infodentro {
+	width: auto;
 	display: grid;
+}
+
+@media (max-width: 800px) {
+	.infodentro {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 
 .expliacion {
@@ -445,6 +453,16 @@ button {
 		overflow: hidden;
 		width: 100%;
 	}
+}
+
+#buttonEnviar:hover {
+	background-color: #343534;
+	cursor: pointer;
+}
+
+#inputboton {
+	margin-left: -40px;
+	margin-bottom: -9em;
 }
 
 #tituloP {
