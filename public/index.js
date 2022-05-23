@@ -1,9 +1,7 @@
 const collection = document.getElementsByClassName("uno");
-console.log(collection);
 
 document.addEventListener("keydown", (event) => {
 	const keyName = event.key;
-	console.log("keydown event\n\n" + "key: " + keyName);
 
 	for (let element of collection) {
 		if (keyName === element.id) {
@@ -17,7 +15,6 @@ document.addEventListener("keydown", (event) => {
 
 document.addEventListener("keyup", (event) => {
 	const keyName = event.key;
-	console.log("keyup event\n\n" + "key: " + keyName);
 
 	for (let element of collection) {
 		if (keyName === element.id) {

@@ -36,7 +36,6 @@ app.get("/getPuntuaciones", (req, res) => {
 			.find({})
 			.toArray(function (err, data) {
 				if (err) throw err;
-				console.log(data);
 				res.json(data);
 				db.close();
 			});
@@ -63,26 +62,13 @@ let jugadores = [];
 let espectadores = [];
 
 io.on("connection", (socket) => {
-	console.log("conectado", socket.id);
 	socket.emit("open", () => console.log("Jugador conectado", socket.id)); //Jugador conectado hace emit
 
-	// socket.on("close", (data) => {
-	// 	console.log("Jugador desconectado Node", data);
-	// 	jugadores.filter(function (item) {
-	// 		return item !== data.id;
-	// 	});
-
-	// 	io.to("sala1").emit("conexionGame", { jugadores: jugadores, espectadores: espectadores });
-	// }); //Envia mensaje a los clientes de la sala}); //Jugador desconectado
-
 	socket.on("onEscribirLetra", (data) => {
-		console.log("onEscribirLetra", data);
-
 		socket.broadcast.emit("actualizarProgreso", { progresoEnemigo: data.progreso });
 	}); //Envia mensaje a los clientes de la sala});
 
 	socket.on("puntuacionesEnemigo", (data) => {
-		console.log("puntuacionesEnemigo", data);
 		//enviar puntuacion wpm enemiga
 		socket.broadcast.emit("puntuacionesFinal", { finalEnemigo: data });
 	});
@@ -96,12 +82,10 @@ io.on("connection", (socket) => {
 		if (jugador1 == undefined) {
 			jugador1 = { id: data.jugador1 };
 			jugadores.push(jugador1);
-			console.log(jugadores);
 		} else {
 			if (jugador2 == undefined) {
 				jugador2 = { id: data.jugador1 };
 				jugadores.push(jugador2);
-				console.log(jugadores);
 			} else {
 				espectador = { id: data.jugador1 };
 				espectadores.push(espectador);

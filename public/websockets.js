@@ -69,8 +69,6 @@ socket.on("connect", function () {
 	function init() {
 		//connexion socket = pasa la frase del servidor
 		socket.on("conexionGame", function (data) {
-			console.log(data.frase.length);
-			debugger;
 			muestra(data.frase);
 		});
 
@@ -82,11 +80,7 @@ socket.on("connect", function () {
 		const random = Math.floor(Math.random() * parafos.length);
 		frases.innerHTML = ""; //parafos[random]
 		input.value = null;
-		//console.log(parafos[random].split(""));
-		console.log(parafos[random]);
-		console.log(parafos[random].split(""));
 		solucion = parafos[random];
-		console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeee", solucion);
 		//haces split de los parafos para que luego compruebe caracter por caracter
 		const prueba = solucion.split("").forEach((character) => {
 			const characterS = document.createElement("span");
@@ -198,20 +192,7 @@ socket.on("connect", function () {
 
 	socket.emit("conexionGame", { jugador1: socket.id });
 
-	// socket.on("conexionGame", (data) => {
-	// 	console.log(data.jugadores[0].id, data.jugadores[1]?.id);
-	// 	let jugador1 = document.getElementById("jugador1");
-	// 	if (data.jugadores[0].id == socket.id) {
-	// 		// jugador1.innerHTML = '<img src="../assets/1websockets.png" width="60px" height="60px">'; // Eres el jug1
-	// 	} else {
-	// 		if (data.jugadores[1].id == socket.id) {
-	// 			// jugador1.innerHTML = '<img src="../assets/2websockets.png" width="60px" height="60px">'; // Eres el jug2
-	// 		}
-	// 	}
-	// });
-
 	socket.on("actualizarProgreso", function (data) {
-		console.log("actualizarProgreso", data.progresoEnemigo);
 		if (data.progresoEnemigo) {
 			theirInnerProgressBar.setAttribute("value", JSON.stringify(data.progresoEnemigo));
 		}

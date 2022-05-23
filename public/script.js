@@ -77,7 +77,6 @@ function parrafosfetch() {
 			return response.json();
 		})
 		.then(function (data) {
-			console.log(data);
 			muestra(data);
 		})
 		.catch(function (err) {
@@ -194,7 +193,6 @@ function muestra(parafos) {
 	const random = Math.floor(Math.random() * parafos.length);
 	frases.innerHTML = ""; //parafos[random]
 	input.value = null;
-	//console.log(parafos[random].split(""));
 	solucion = parafos[random].texto;
 	console.log(solucion);
 	//haces split de los parafos para que luego compruebe caracter por caracter
