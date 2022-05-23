@@ -6,23 +6,22 @@ window.onload = function () {
 		type: "GET",
 		success: function (data) {
 			console.log(data);
+			for (let i = 0; i < data.length; i++) {
+				var fila = taula.insertRow(0);
+				fila.insertCell(0).innerHTML = "<div id='tabla'><table><thead><tr><th></th><th>Partida " + i + "</th></tr><thead><tr><td>" + data[i].nombre + "</td><td>Nombre</td></tr><tr><td>" + data[i].wpm + "</td><td>WPM</td></tr><tr><td>" + data[i].accuracy + "</td><td>Accuracy</td></tr></table></div>";
+			}
 		},
 	});
 
 	//puntuaciones localstorage
 	var almacenar = {
-		taula: document.getElementById("taula"),
+		taula2: document.getElementById("taula2"),
 		mostrar: function () {
 			//si no hay nada guardado en local storage te saltará un mensaje
 			if (!localStorage.length) {
-				var fila = taula.insertRow(0);
-				fila.insertCell(0).innerHTML = "¡No has jugado ninguna partida!";
+				var fila = taula2.insertRow(0);
+				fila.insertCell(0).innerHTML = "<div id='nopartidas'>¡No has jugado ninguna partida!</div>";
 				//dom editar la fila y la taula
-				fila.style.color = "red";
-				fila.style.fontWeight = "900";
-				fila.style.fontSize = "25px";
-				taula.style.marginTop = "19vh";
-				taula.style.marginLeft = "80vh";
 			} // en cambio si hay algo guardado en local storage te devolverá los valores que hayan guardados
 			else {
 				let arrayKeys = [];

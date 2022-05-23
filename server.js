@@ -37,6 +37,7 @@ app.get("/getPuntuaciones", (req, res) => {
 			.toArray(function (err, data) {
 				if (err) throw err;
 				console.log(data);
+				res.json(data);
 				db.close();
 			});
 	});
@@ -124,20 +125,6 @@ function guardarPuntuaciones(nombreJugador, wpm, accuracy) {
 		});
 	});
 }
-
-// function getPuntuaciones() {
-// 	MongoClient.connect(url, function (err, db) {
-// 		if (err) throw err;
-// 		var dbo = db.db("PEEPOTYPE");
-// 		dbo.collection("puntuaciones")
-// 			.find({})
-// 			.toArray(function (err, data) {
-// 				if (err) throw err;
-// 				console.log(data);
-// 				db.close();
-// 			});
-// 	});
-// }
 
 /* */
 //server

@@ -17,14 +17,19 @@
 				<a href="/puntuaciones">👑</a>
 			</div>
 		</div>
-		<div>
-			<div id="mongo"></div>
-			<div id="tituloP">TUS ÚLTIMAS PUNTUACIONES</div>
+		<div id="flexP">
+			<div id="mongo">
+				<div id="tituloPM">PARTIDAS GUARDADAS</div>
+				<table class="storage" id="taula"></table>
+			</div>
 			<!-- <div id="boton" ></div> onclick que te lleve a scoreboard -->
-			<table class="storage" id="taula"></table>
-			<canvas class="canvas" id="myChart2" width="700" height="200"> </canvas>
-			<canvas class="canvas" id="myChart3" width="700" height="200"> </canvas>
-			<canvas class="canvas" id="myChart4" width="700" height="200"> </canvas>
+			<div id="canvas">
+				<div id="tituloP">TUS ÚLTIMAS PUNTUACIONES</div>
+				<table class="storage2" id="taula2"></table>
+				<canvas class="canvas" id="myChart2" width="700" height="200"> </canvas>
+				<canvas class="canvas" id="myChart3" width="700" height="200"> </canvas>
+				<canvas class="canvas" id="myChart4" width="700" height="200"> </canvas>
+			</div>
 		</div>
 	</body>
 	<script type="text/javascript" src="./public/puntuaciones.js"></script>

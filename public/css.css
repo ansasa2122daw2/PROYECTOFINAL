@@ -12,19 +12,23 @@
 	font-family: FUENTE3;
 	src: url("../assets/RadioCanada-VariableFont_wdth\,wght.ttf");
 }
-
-html {
-	scroll-behavior: smooth;
+@media screen and (max-width: 800px) {
+	html {
+		scroll-behavior: smooth;
+	}
 }
-
 body {
 	background-color: #b7edbf;
 	overflow-x: hidden;
 	width: 100%;
 }
-
-#bodyPun {
-	width: 100%;
+@media screen and (max-width: 400) {
+	#bodyPun {
+		width: 100%;
+	}
+	#body {
+		width: 100%;
+	}
 }
 
 /* HEADER */
@@ -118,7 +122,6 @@ body {
 }
 
 /* INDICE */
-
 .principal {
 	align-items: center;
 	margin: 10% 35%;
@@ -167,7 +170,7 @@ body {
 	align-items: center;
 	margin-top: 30%;
 	margin-left: -35%;
-	width: 170%;
+	width: 100%;
 	opacity: 0.5;
 }
 
@@ -297,6 +300,7 @@ body {
 	.pie-pagina .grupo-1 {
 		width: 90%;
 		grid-template-columns: repeat(1, 1fr);
+
 		grid-gap: 30px;
 		padding: 35px 0px;
 	}
@@ -305,9 +309,9 @@ body {
 /* SOLO UN JUGADOR */
 
 #body {
-	width: 770px;
+	/* width: 770px; */
 	padding: 15%;
-	margin-left: 20vh;
+	margin-left: 2em;
 	margin-top: -10vh;
 	border-radius: 10px;
 	align-items: center;
@@ -340,7 +344,7 @@ body {
 	font-family: FUENTE2;
 }
 
-@media (max-width: 745px) {
+@media (max-width: 445px) {
 	#body {
 		padding: 20px;
 	}
@@ -436,9 +440,11 @@ button {
 	text-decoration: none;
 	border: none;
 }
-
-.jugador {
-	overflow: hidden;
+@media screen and (max-width: 400px) {
+	.jugador {
+		overflow: hidden;
+		width: 100%;
+	}
 }
 
 #tituloP {
@@ -553,6 +559,7 @@ button {
 }
 
 /* puntuaciones un jugador */
+
 #titulos {
 	font-family: FUENTE3;
 	font-size: 30px;
@@ -587,6 +594,67 @@ button {
 	margin-bottom: 17vh;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#mongo {
+	width: 100%;
+	height: 100%;
+	margin-top: 0.6em;
+	margin-left: -2em;
+	background-color: rgba(158, 177, 158, 0.856);
+	grid-area: mongo;
+}
+
+.canvas {
+	grid-area: canvas;
+}
+
+.storage {
+	width: auto;
+	height: auto;
+	margin: auto;
+	font-family: FUENTE3;
+	text-align: center;
+	align-items: center;
+	margin-bottom: 3em;
+	font-size: 15px;
+	grid-area: mongo;
+}
+
+.storage2 {
+	color: red;
+	grid-area: canvas;
+	font-family: FUENTE3;
+	width: auto;
+	height: auto;
+	margin: auto;
+	font-weight: bold;
+}
+
+#flexP {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-areas: "mongo canvas";
+}
+
+@media (max-width: 800px) {
+	#flexP {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		grid-gap: 30px;
+		grid-template-areas:
+			"mongo"
+			"canvas";
+	}
+}
+
+#tituloPM {
+	font-family: FUENTE3;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 3em;
+	font-size: 30px;
 }
 
 /* MULTIJUGADOR */
