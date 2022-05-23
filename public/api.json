@@ -3,8 +3,17 @@
 	{ "id": 2, "texto": "Hay dos tipos de personas en el mundo, hijo -dijo su padre severamente-. Los que salvan vidas. Y los que las quitan. - ¿Y los que protegen y defienden? ¿Los que salvan vidas quitando vidas? Su padre bufó. -Eso es como intentar detener una tormenta soplando más fuerte. Ridículo. No se puede proteger matando." },
 	{ "id": 3, "texto": "Me quedé dormido pensando en que Amelia Garayoa, aquella misteriosa antepasada mía, había sido una romántica temperamental, una mujer ansiosa de experiencias, constreñida por las imposiciones sociales de su época; un tanto incauta y desde luego con una clara tendencia a la fascinación por el abismo." },
 	{ "id": 4, "texto": "Si el líder dice de tal evento esto no ocurrió, pues no ocurrió. Si dice que dos y dos son cinco, pues dos y dos son cinco. Esta perspectiva me preocupa mucho más que las bombas." },
-	{ "id": 5, "texto": "Cada libro, cada volumen que ves aquí, tiene un alma. El alma de la persona que lo escribió y de aquellos que lo leyeron, vivieron y soñaron con él. Cada vez que un libro cambia de manos, cada vez que alguien baja sus ojos a las páginas, su espíritu crece y se fortalece" },
-	{ "id": 6, "texto": "Rendirse es lo que destruye a la gente, cuando te niegas con todo tu corazón a rendirte entonces trasciendes tu humanidad, incluso ante la muerte nunca te rindas." },
+	{
+		"id": 5,
+		"texto": "De los recuerdos de esta triste historia y de diversos datos incompletos, se ha formado el fondo de esta novela; pero ha debido aprovecharse la oportunidad para dar una especie de paseo por en medio de una sociedad que ha desaparecido en parte, haciendo de ella, si no pinturas acabadas, al menos bocetos de cuadros sociales que parecerán hoy tal vez raros y extraños, pues que las costumbres en todas las clases se han modificado de tal manera que puede decirse sin exageración que desde la mitad de este siglo a lo que va corrido de él, México, hasta en sus edificios, es otra cosa distinta de lo que era en 1810."
+	},
+	{
+		"id": 6,
+		"texto": "La campaña trajo a muchos honores, pero a mí sólo desgracias y calamidades. Fui separado de mi brigada e incorporado a las tropas de Berkshire, con las que estuve de servicio durante el desastre de Maiwand. En la susodicha batalla una bala de Jezail me hirió el hombro, haciéndose añicos el hueso y sufriendo algún daño la arteria subclavia. Hubiera caído en manos de los despiadados ghazis a no ser por el valor y lealtad de Murray, mi asistente, quien, tras ponerme de través sobre una caballería, logró alcanzar felizmente las líneas británicas."
+	},
 	{ "id": 7, "texto": "La vanidad y el orgullo son cosas distintas, aunque muchas veces se usen como sinónimos. El orgullo está relacionado con la opinión que tenemos de nosotros mismos; la vanidad, con lo que quisiéramos que los demás pensaran de nosotros." },
-	{ "id": 8, "texto": "Los libros que de verdad me gustan son esos que cuando acabas de leerlos piensas que ojalá el autor fuera muy amigo tuyo para poder llamarle por teléfono cuando quisieras." }
+	{
+		"id": 8,
+		"texto": "La triste necesidad, que me ha tenido siempre con un pie sobre el cuello, me obliga a vender mis Memorias. Nadie puede hacerse una idea de cuánto he sufrido por tener que hipotecar mi tumba; pero me obligan a este postrer sacrificio mis juramentos y la coherencia de mi conducta. Por un apego acaso pusilánime, consideraba estas Memorias como confidentes de los que nunca hubiera querido separarme; mi intención era legárselas a madame de Chateaubriand; ella las daría a conocer según su voluntad, o las destruiría, lo que hoy desearía más que nunca"
+	}
 ]
